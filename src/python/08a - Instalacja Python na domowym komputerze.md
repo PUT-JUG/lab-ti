@@ -171,8 +171,6 @@ sudo snap install pycharm-community --classic
 
 2. Ściągnij wersję *Community* klikając czarny przycisk **Download**:
 
-![6_download_pycharm](_images/08a/6_download_pycharm.png)
-
 3. Otwórz pobrany obraz dysku i skopiuj aplikację *PyCharm CE* do katalogu *Applications*.
 
 ## Pierwsze uruchomienie PyCharm i konfiguracja środowiska
