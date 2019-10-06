@@ -48,7 +48,45 @@ sudo apt install python3-pip
 
 ### macOS
 
-TODO
+Możliwa jest instalacja samego pakietu Python ze strony python.org, zaleca się jednak zainstalowanie wersji z repozytorium MacPorts, wraz ze środowiskiem XCode oraz konsolowymi narzędziami programistycznymi, według poniższej instrukcji.
+
+#### Jeśli nie masz jeszcze XCode:
+
+1. Korzystając z App Store zainstaluj środowisko programistyczne *XCode*: [link do aplikacji](https://apps.apple.com/us/app/xcode/id497799835). Wymagane jest darmowe konto Apple ID.
+
+2. Uruchom po raz pierwszy program Xcode (poprzez Launchpad lub Spotlight), co spowoduje zainstalowanie dodatkowych narzędzi. Podaj hasło użytkownika, zamknij *XCode* po zakończonej instalacji i przejdź do kroku 3.
+
+#### Jeśli masz już XCode:
+
+3. Uruchom aplikację Terminal (poprzez Launchpad lub Spotlight).
+
+W otwartym terminalu wykonaj następującą komendę (przepisz/wklej i zatwierdź wciskając `ENTER`):
+
+```shell
+xcode-select --install
+```
+
+Wyraź zgodę na instalację oprogramowania, po zakończeniu zamknij terminal.
+
+4. Pobierz instalator najnowszej wersji MacPorts dla posiadanej wersji systemu ze strony https://github.com/macports/macports-base/releases/
+Wersję zainstalowanego systemu możesz sprawdzić otwierając menu Apple &rarr; *Ten Mac*. Przykładowow systemu macOS 10.14 Mojave, jest to w chwili pisania instrukcji plik *MacPorts-2.6.1-10.14-Mojave.pkg*. Uruchom instalator i pozostaw domyślne opcje, wybierając *Continue* na każdym z ekranów. Autoryzuj hasłem użytkownika, kiedy instalator o to poprosi.
+
+5. Otwórz ponownie aplikację terminal. Wykonaj kolejno polecenia, zatwierdzając klawiszem `ENTER`:
+
+Zaktualizuj bazę pakietów MacPorts:
+```shell
+sudo port selfupdate
+```
+
+Zainstaluj Python w wersji 3.7:
+```shell
+sudo port install python37
+```
+
+Wybierz Python 3.7 jako domyślną wersję Python 3 w systemie:
+```shell
+sudo port select --set python3 python37
+```
 
 ## Instalacja pakietów dla Python 3
 
