@@ -68,10 +68,10 @@ xcode-select --install
 
 Wyraź zgodę na instalację oprogramowania, po zakończeniu zamknij terminal.
 
-4. Pobierz instalator najnowszej wersji MacPorts dla posiadanej wersji systemu ze strony https://github.com/macports/macports-base/releases/
+4. Pobierz instalator najnowszej wersji MacPorts dla posiadanej wersji systemu ze strony https://github.com/macports/macports-base/releases/.
 Wersję zainstalowanego systemu możesz sprawdzić otwierając menu Apple &rarr; *Ten Mac*. Przykładowow systemu macOS 10.14 Mojave, jest to w chwili pisania instrukcji plik *MacPorts-2.6.1-10.14-Mojave.pkg*. Uruchom instalator i pozostaw domyślne opcje, wybierając *Continue* na każdym z ekranów. Autoryzuj hasłem użytkownika, kiedy instalator o to poprosi.
 
-5. Otwórz ponownie aplikację terminal. Wykonaj kolejno polecenia, zatwierdzając klawiszem `ENTER`:
+5. Otwórz ponownie aplikację terminal. Wykonaj kolejno polecenia, zatwierdzając klawiszem `ENTER`. Przy wykonaniu pierwszej komendy pojawi się pytanie o hasło użytkownika, należy je wpisać (wpisywane znaki nie będą wyświetlane w konsoli) i zatwierdzić `ENTER`.
 
 Zaktualizuj bazę pakietów MacPorts:
 ```shell
@@ -80,56 +80,68 @@ sudo port selfupdate
 
 Zainstaluj Python w wersji 3.7:
 ```shell
-sudo port install python37
+sudo port install python37 py37-pip pip_select
 ```
+Zapytany zatwierdź instalację klawiszem `ENTER`.
 
 Wybierz Python 3.7 jako domyślną wersję Python 3 w systemie:
 ```shell
 sudo port select --set python3 python37
+```
+oraz menadżer *pip* w wersji 3.7 jako domyślny dla polecenia `pip3`:
+```shell
+sudo port select --set pip3 pip37
 ```
 
 ## Instalacja pakietów dla Python 3
 
 Czysta instalacja Pythona dostarcza jedynie podstawowej funkcjonalności języka. Pomimo, że jest to rozbudowany i wielozadaniowy język skryptowy możliwe jest rozszerzenie jego funkcjonalności poprzez instalację pakietów. Istnieje cały szereg pakietów, począwszy od pakietu automatyzującego wyświetlanie pasków postępu ([tqdm](https://github.com/tqdm/tqdm)), na narzędziach do uczenia głębokich sieci neuronowych ([PyTorch](https://pytorch.org/)) skończywszy.
 
-Instalacja pakietów zazwyczaj wykonywana jest za pomocą menażera pakietów dla Pythona czyli *pip*. Wywołanie menadżera pakietów odbywa się z linii poleceń. Uruchomienie linii poleceń różni się zależnie od systemu. Uruchom terminal zgodnie z poniższą instrukcją, zależnie od wykorzystywanego systemu operacyjnego:
-
-### Microsoft Windows 10
-
-Na klawiaturze wciśnij kombinację klawiszy: `Windows + R`. Pojawi się okienko *Uruchamianie*. Wpisz na klawiaturze frazę **cmd** (1), a następnie zatwierdź wciskając `ENTER` lub **OK** (2).
-
-![5_windows_cmd](_images/08a/5_windows_cmd.png)
-
-### Linux Ubuntu
-
-Wciśnij na klawiaturze kombinację klawiszy: `Ctrl + Alt + T`.
-
-### macOS
-
-TODO
-
-### Właściwa instalacja pakietów
-
-W otwartym terminalu wykonaj następujące komendy (przepisz/wklej i zatwierdź wciskając `ENTER`):
-
-1. Wykonaj aktualizację menadżera pakietów *pip*:
-
-```shell
-pip3 install --upgrade pip
-```
-
-2. Zainstaluj wykorzystywane na zajęciach pakiety:
-
-```shell
-pip3 install numpy pandas matplotlib jupyter
-```
-
-Powyższa komenda zainstaluje następujące pakiety:
+Podczas zajęć wykorzystywać będziemy następujące pakiety:
 
 - [NumPy](https://numpy.org/) - podstawowy pakiet do obliczeń, zawiera między innymi operacje macierzowe,
 - [Pandas](https://pandas.pydata.org/) - zaawansowana biblioteka struktur danych oparta na NumPy,
 - [Matplotlib](https://matplotlib.org/) - pakiet rysujący wykresy,
 - [Jupyter](https://jupyter.org/) - interaktywne środowisko programistyczne i obliczeniowe.
+
+Instalacja pakietów zazwyczaj wykonywana jest za pomocą menażera pakietów dla Pythona czyli *pip*. Wywołanie menadżera pakietów odbywa się z linii poleceń. Zainstaluj powyższe pakiety korzystając, zależnie od systemu, z poniższej instrukcji:
+
+### Microsoft Windows 10 oraz Linux Ubuntu
+
+1. Otwórz okno linii poleceń:
+
+* Windows 10: na klawiaturze wciśnij kombinację klawiszy: `Windows + R`. Pojawi się okienko *Uruchamianie*. Wpisz na klawiaturze frazę **cmd** (1), a następnie zatwierdź wciskając `ENTER` lub **OK** (2).
+
+![5_windows_cmd](_images/08a/5_windows_cmd.png)
+
+* Linux Ubuntu: wciśnij na klawiaturze kombinację klawiszy: `Ctrl + Alt + T`.
+
+2. W otwartym terminalu wykonaj następujące komendy (przepisz/wklej i zatwierdź wciskając `ENTER`):
+
+Wykonaj aktualizację menadżera pakietów *pip*:
+
+```shell
+pip3 install --upgrade pip
+```
+
+Zainstaluj wykorzystywane na zajęciach pakiety:
+
+```shell
+pip3 install numpy pandas matplotlib jupyter
+```
+
+### macOS
+
+Menadżer *pip* z pakietu MacPorts domyślnie próbuje instalować pakiety globalnie (dla całego systemu). O ile możliwe jest wymuszenie instalacji w katalogu domowym użytkownika (parametrem `--user`), pakiety te są również dostępne bezpośrednio z poziomu MacPorts i warto skorzystać z tej opcji:
+
+1. Otwórz aplikację Terminal.
+
+2. Wykonaj polecenie:
+
+```shell
+sudo port install py37-numpy py37-pandas py37-matplotlib py37-jupyter
+```
+Podaj hasło użytkownika, jeśli zostaniesz o to poproszony. Zatwierdź instalację dodatkowych wymaganych pakietów klawiszem `ENTER`.
 
 ## Instalacja PyCharm
 
@@ -155,7 +167,13 @@ sudo snap install pycharm-community --classic
 
 ### macOS
 
-TODO
+1. Wejdź na stronę: [https://www.jetbrains.com/pycharm/download/#section=mac](https://www.jetbrains.com/pycharm/download/#section=mac)
+
+2. Ściągnij wersję *Community* klikając czarny przycisk **Download**:
+
+![6_download_pycharm](_images/08a/6_download_pycharm.png)
+
+3. Otwórz pobrany obraz dysku i skopiuj aplikację *PyCharm CE* do katalogu *Applications*.
 
 ## Pierwsze uruchomienie PyCharm i konfiguracja środowiska
 
