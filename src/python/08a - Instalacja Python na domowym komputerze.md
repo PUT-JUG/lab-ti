@@ -69,7 +69,7 @@ xcode-select --install
 Wyraź zgodę na instalację oprogramowania, po zakończeniu zamknij terminal.
 
 4. Pobierz instalator najnowszej wersji MacPorts dla posiadanej wersji systemu ze strony https://github.com/macports/macports-base/releases/.
-Wersję zainstalowanego systemu możesz sprawdzić otwierając menu Apple &rarr; *Ten Mac*. Przykładowow systemu macOS 10.14 Mojave, jest to w chwili pisania instrukcji plik *MacPorts-2.6.1-10.14-Mojave.pkg*. Uruchom instalator i pozostaw domyślne opcje, wybierając *Continue* na każdym z ekranów. Autoryzuj hasłem użytkownika, kiedy instalator o to poprosi.
+Wersję zainstalowanego systemu możesz sprawdzić otwierając menu Apple &rarr; *Ten Mac*. Przykładowo dla systemu macOS 10.14 Mojave, jest to w chwili pisania instrukcji plik *MacPorts-2.6.1-10.14-Mojave.pkg*. Uruchom instalator i pozostaw domyślne opcje, wybierając *Continue* na każdym z ekranów. Autoryzuj hasłem użytkownika, kiedy instalator o to poprosi.
 
 5. Otwórz ponownie aplikację terminal. Wykonaj kolejno polecenia, zatwierdzając klawiszem `ENTER`. Przy wykonaniu pierwszej komendy pojawi się pytanie o hasło użytkownika, należy je wpisać (wpisywane znaki nie będą wyświetlane w konsoli) i zatwierdzić `ENTER`.
 
@@ -169,7 +169,7 @@ sudo snap install pycharm-community --classic
 
 1. Wejdź na stronę: [https://www.jetbrains.com/pycharm/download/#section=mac](https://www.jetbrains.com/pycharm/download/#section=mac)
 
-2. Ściągnij wersję *Community* klikając czarny przycisk **Download**:
+2. Ściągnij wersję *Community* klikając czarny przycisk **Download**.
 
 3. Otwórz pobrany obraz dysku i skopiuj aplikację *PyCharm CE* do katalogu *Applications*.
 
