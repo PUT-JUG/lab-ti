@@ -9,7 +9,7 @@
 \usepackage{todonotes}
 \usepackage{listings}
 \usepackage{caption}
-\usepackage[backend=biber]{biblatex}
+% \usepackage[backend=biber]{biblatex}
 
 \usepackage[unicode,breaklinks,pdfusetitle,colorlinks=true]{hyperref}
 \hypersetup{pdfproducer={Latex with hyperref},pdfcreator={pdflatex},allcolors=[rgb]{0,0,0.4}}
@@ -43,7 +43,7 @@
 	{Ź}{{\'Z}}1
 }
 
-\addbibresource{bibliografia.bib}
+%\addbibresource{bibliografia.bib}
 
 \begin{document}
 	\maketitle
@@ -418,6 +418,8 @@ c & d \\ \hline
 	
 	%\section{Dla zainteresowanych}
 	
-	\printbibliography
+	%\printbibliography
+	\bibliography{bibliografia} 
+	\bibliographystyle{plain}
 	
 \end{document}
