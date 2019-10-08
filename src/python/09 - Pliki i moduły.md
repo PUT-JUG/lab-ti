@@ -239,17 +239,34 @@ json_file.close()
 
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
-1. TODO
+Dany jest plik JSON: [citybikes_networks.json](./_resources/09/citybikes_networks.json) - źródło: [http://api.citybik.es/v2/](http://api.citybik.es/v2/). Plik zawiera informacje o wypożyczalniach publicznych rowerów na całym świecie.
+
+1. Załaduj zawartość pliku korzystając z modułu `json`.
+2. Podstawowym elementem danych jest klucz **networks** wewnątrz którego znajduje się lista lokacji pod którą dostępne są wypożyczalnie rowerów miejskich. Wyświetl przykładową pierwszą lokację i przeanalizuj strukturę przykładowego wpisu. **PODPOWIEDŹ** `bike_networks["networks"][0]`.
+3. Wypisz wszystkie lokacje w Polsce w których dostępne są wypożyczalnie rowerów oraz firmy, które świadczą w nim usługi - poniżej przykładowe wyjście z programu. **PODPOWIEDŹ** Listę można przeglądać korzystając z pętli: `for net in bike_networks["networks"]`.
+
+> Bielsko-Biała  -  ['Bike U Sp. z o.o.']  
+> Bydgoszcz  -  ['Bike U Sp. z o.o.']  
+> Kraków  -  ['Social Bicycles Inc.']
 
 ---
 
 ## Zadanie końcowe :fire: :hammer:
 
-TODO
+*The Star Wars API* dostarcza informacje o filmach z uniwersum *Star Wars*. Można uzyskać informacje o następujących tematach:
 
-## Zadanie domowe :boom: :house:
+- Bohaterzy - [https://swapi.co/api/people/](https://swapi.co/api/people/)
+- Planety - [https://swapi.co/api/planets/](https://swapi.co/api/planets/)
+- Statki kosmiczne - [https://swapi.co/api/starships](https://swapi.co/api/starships)
+- Pojazdy - [https://swapi.co/api/vehicles](https://swapi.co/api/vehicles)
+- Rasy - [https://swapi.co/api/species](https://swapi.co/api/species)
+- Filmy - [https://swapi.co/api/films](https://swapi.co/api/films)
 
-TODO
+Wchodząc na którykolwiek z powyższych linków zobaczymy stronę z informacjami na poszczególne tematy. Jeżeli wykonamy zapytanie za pomocą innego klienta (na przykład modułu `requests`) otrzymamy zawartość w postaci zgodnej z JSON.
+
+1. Wczytaj z SWAPI informacje o bohaterach. `requests.get()` zwraca łańcuch znaków, zamiast uchwyty do pliku, dlatego do przetworzenia JSON do formy słownika należy skorzystać z `json.loads()` - z *s* na końcu oznaczający *string*.
+2. Wypisz imiona najcięższego, najlżejszego, najniższego i najwyższego bohatera w uniwersum.
+3. Wypisz imiona i kolor oczu wszystkich bohaterów urodzony po Bitwie o Yavin (ABB - After Battle of Yavin).
 
 ---
 
