@@ -1,4 +1,4 @@
-# 09 - Pliki i operacje na danych
+# 09 - Pliki i moduły
 
 ## Pliki
 
