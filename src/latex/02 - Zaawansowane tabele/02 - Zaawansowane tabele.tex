@@ -1,0 +1,246 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{graphicx}
+\usepackage{polski}
+\usepackage{listings}
+\usepackage{multirow}
+
+\lstset{
+	literate=%
+	{ą}{{\k{a}}}1
+	{Ą}{{\k{A}}}1
+	{ć}{{\'c}}1
+	{Ć}{{\'{C}}}1
+	{ę}{{\k{e}}}1
+	{Ę}{{\k{E}}}1
+	{ł}{{\l{}}}1
+	{Ł}{{\L{}}}1
+	{ń}{{\'n}}1
+	{Ń}{{\'N}}1
+	{ó}{{\'o}}1
+	{Ó}{{\'O}}1
+	{ś}{{\'s}}1
+	{Ś}{{\'S}}1
+	{ż}{{\.z}}1
+	{Ż}{{\.Z}}1
+	{ź}{{\'z}}1
+	{Ź}{{\'Z}}1
+}
+
+\author{Tomasz Mańkowski}
+\title{Zaawansowane tabele}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Centrowanie tabel i rysunków}
+
+Tabele i rysunki są automatycznie wstawiane z justowaniem do lewej strony. W celu ich wyśrodkowania możemy użyć otoczenia \emph{center}:
+
+\begin{lstlisting}[language=TeX]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline a & b \\ \hline
+			c & d \\ \hline
+		\end{tabular}
+	\end{center}
+\end{lstlisting}
+
+Uzyskując: 
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline a & b \\ \hline
+		c & d \\ \hline
+	\end{tabular}
+\end{center}
+
+\section{Zaawansowane tabele}
+
+\subsection{Zawijanie wierszy w komórkach}
+
+Kiedy do dokumentu \LaTeX wstawimy tabelę zawierającą dużo tekstu nie zostanie wykonane automatyczne zawijanie wierszy:
+
+\begin{tabular}{| l | l | l | l |}
+	\hline
+	Autor & Rok & Gatunek & Treść \\ \hline
+	Marek & 1992 & Poemat & Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue, lacus vel tincidunt placerat, nulla ligula mattis eros, at mollis lacus leo sit amet risus. \\ \hline
+	Jarek & 2019 & Proza & Quisque aliquet, lorem vitae maximus laoreet, elit lectus pharetra nisi, eget facilisis erat urna tincidunt odio. Integer consequat quam a tristique efficitur. Duis in porta nisl. \\ \hline
+	Zosia & 1543 & Dramat & Vestibulum ullamcorper dignissim arcu in placerat. Aliquam commodo justo at sapien vulputate, nec fringilla felis convallis. In hac habitasse platea dictumst. \\
+	\hline
+\end{tabular}
+
+Problem możemy rozwiązać korzystając z atrybutu kolumny \emph{p}, po którym w nawiasach \lstinline|{}| podajemy szerokość kolumny. Dla powyższego przykładu:
+
+\begin{lstlisting}[language=TeX]
+	\begin{tabular}{ | l | l | l | p{5cm} |}
+\end{lstlisting}
+
+Co daje następujący efekt:
+
+\begin{tabular}{ | l | l | l | p{5cm} |}
+	\hline
+	Autor & Rok & Gatunek & Treść \\ \hline
+	Marek & 1992 & Poemat & Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue, lacus vel tincidunt placerat, nulla ligula mattis eros, at mollis lacus leo sit amet risus. \\ \hline
+	Jarek & 2019 & Proza & Quisque aliquet, lorem vitae maximus laoreet, elit lectus pharetra nisi, eget facilisis erat urna tincidunt odio. Integer consequat quam a tristique efficitur. Duis in porta nisl. \\ \hline
+	Zosia & 1543 & Dramat & Vestibulum ullamcorper dignissim arcu in placerat. Aliquam commodo justo at sapien vulputate, nec fringilla felis convallis. In hac habitasse platea dictumst. \\
+	\hline
+\end{tabular}
+
+\subsection{Scalanie komórek wielu kolumn}
+
+W celu scalenie komórek wielu kolumn wykorzystujemy komendę
+
+\begin{lstlisting}[language=TeX]
+\lstinline|\multicolumn{liczba_kolumn}{justowanie}{zawartość}|
+\end{lstlisting}
+
+Przykładowo:
+
+\begin{lstlisting}[language=TeX]
+\begin{tabular}{c | c | c}
+	\hline
+	\multicolumn{3}{c}{Uczniowie} \\ \hline
+	Imię & Nazwisko & Nr. w dzienniku \\ \hline
+	Jan & Kowalski & 1 \\
+	Krystian & Pierwszaławka & 6 \\
+	Olek & Nadosiadkę & 7 \\
+	Maria & Znana & 2 \\
+	Julia & Nieznana & 5 \\
+	Rafał & Tajemniczy & 3 \\
+	Stefan & Ostatniaławka & 4
+\end{tabular}
+\end{lstlisting}
+
+\begin{tabular}{c | c | c}
+	\hline
+	\multicolumn{3}{c}{Uczniowie} \\ \hline
+	Imię & Nazwisko & Nr. w dzienniku \\ \hline
+	Jan & Kowalski & 1 \\
+	Krystian & Pierwszaławka & 6 \\
+	Olek & Nadosiadkę & 7 \\
+	Maria & Znana & 2 \\
+	Julia & Nieznana & 5 \\
+	Rafał & Tajemniczy & 3 \\
+	Stefan & Ostatniaławka & 4
+\end{tabular}
+
+\subsection{Scalanie komórek w wierszach}
+
+W celu scalenia komórek wierszach konieczne jest dodanie pakiety \lstinline|\usepackage{multirow}|. Komenda jest bliźniacza do komendy scalającej kolumny:
+
+\begin{lstlisting}[language=TeX]
+\multirow{liczba_wierszy}{szerokość}{zawartość}|. 
+\end{lstlisting}
+
+\emph{Szerokość} w większości przypadków ustawiamy na \lstinline|*|, co oznacza naturalną szerokość. Używając \lstinline|\multirow| należy pamiętać aby w kolejnych liniach na które ma zostać rozszerzona komórka zostawić ,,puste'' pole:
+
+\begin{lstlisting}[language=TeX]
+\begin{tabular}{c | c | c | c}
+	\hline
+	\multicolumn{4}{c}{Uczniowie} \\ \hline
+	Imię & Nazwisko & Nr. w dzienniku & Rząd w sali \\ \hline
+	Jan & Kowalski & 1 & \multirow{3}{*}{Pierwszy}\\
+	Krystian & Pierwszaławka & 6 & \\
+	Olek & Nadosiadkę & 7 & \\ \hline
+	Maria & Znana & 2 & \multirow{2}{*}{Drugi}\\
+	Julia & Nieznana & 5 & \\ \hline
+	Rafał & Tajemniczy & 3 & Trzeci\\ \hline
+	Stefan & Ostatniaławka & 4 & Czwarty
+\end{tabular}
+\end{lstlisting}
+
+\begin{tabular}{c | c | c | c}
+	\hline
+	\multicolumn{4}{c}{Uczniowie} \\ \hline
+	Imię & Nazwisko & Nr. w dzienniku & Rząd w sali \\ \hline
+	Jan & Kowalski & 1 & \multirow{3}{*}{Pierwszy}\\
+	Krystian & Pierwszaławka & 6 & \\
+	Olek & Nadosiadkę & 7 & \\ \hline
+	Maria & Znana & 2 & \multirow{2}{*}{Drugi}\\
+	Julia & Nieznana & 5 & \\ \hline
+	Rafał & Tajemniczy & 3 & Trzeci\\ \hline
+	Stefan & Ostatniaławka & 4 & Czwarty
+\end{tabular}
+
+\subsection{Wielokrotne linie pionowe i poziome}
+
+Wielokrotną pionową linię uzyskujemy wstawiając wielokrotny znak \lstinline||| w definicji justowania kolumn, pozioma pionowa linia uzyskiwana jest przez podwójne wstawienie wielokrotnego \lstinline|\hline|, przykładowo:
+
+\begin{lstlisting}
+\begin{tabular} {r || c | c }
+	Miasto & Licz. Mieszkańców [tys. os.] & 
+	Powierzchnia $\left[\frac{os.}{km^2}\right]]$ \\ 
+	\hline \hline
+	Poznań & 536 & 2048 \\
+	Warszawa & 1 777 & 3437 \\
+	Gdańsk & 466 & 1772 \\
+	Wrocław & 641 & 2191
+\end{tabular}
+\end{lstlisting}
+
+\begin{tabular} {r || c | c }
+	Miasto & Licz. Mieszkańców [tys. os.] & 
+	Powierzchnia $\left[\frac{os.}{km^2}\right]]$ \\ \hline \hline
+	Poznań & 536 & 2048 \\
+	Warszawa & 1 777 & 3437 \\
+	Gdańsk & 466 & 1772 \\
+	Wrocław & 641 & 2191
+\end{tabular}
+
+\subsection{Częściowe linie poziome}
+
+Pozioma linie nie musi obejmować całej tabeli. Można wykorzystać \lstinline|\cline{X-Y}|, gdzie podajemy zakres kolumn dla których ma zostać wyświetlona linia pozioma:
+
+\begin{lstlisting}
+\begin{tabular} { c | c | c  }
+	& Tytuł 1 & Tytuł 2 \\ \cline{2-3}
+	& Podtytuł 1 & Podtytuł 2 \\ \hline
+	Pozycja 1 & a & b \\ \hline
+	Pozycja 2 & c & d
+\end{tabular}
+\end{lstlisting}
+
+\begin{tabular} { c | c | c  }
+	& Tytuł 1 & Tytuł 2 \\ \cline{2-3}
+	& Podtytuł 1 & Podtytuł 2 \\ \hline
+	Pozycja 1 & a & b \\ \hline
+	Pozycja 2 & c & d
+\end{tabular}
+
+\section{Tabela do odtworzenia}
+
+\begin{center}
+	\begin{tabular}{c||c|c|c|c}
+		\multicolumn{5}{c}{\textbf{Przebieg eksperymentu}} \\ \hline \hline \hline
+		Przeguby & Ruch & Orientacja & Szczegóły & ID\\ \hline \hline
+		
+		\multirow{5}{*}{ruchome} & \multirow{2}{*}{arbitralny} & \multirow{2}{*}{-} & wibracje & VJ-AB-G \\ \cline{4-5}
+		& & & - & VJ-AB \\ \cline{2-5}
+		& \multirow{3}{*}{stały} &  X &  \multirow{3}{*}{-} & VJ-FB-X \\ \cline{3-3} \cline{5-5}
+		& &  Y & & VJ-FB-Y \\ \cline{3-3}  \cline{5-5}
+		& &  Z & & VJ-FB-Z \\ \hline \hline
+		
+		\multirow{6}{*}{$^{1z}\theta$ unieruchomiony} & arbitralny & - & wibracje & FZ-AB-G \\ \cline{2-5}
+		& \multirow{5}{*}{stały} &  Y &  \multirow{2}{*}{wibracje} & FZ-FB-Y-G \\ \cline{3-3}  \cline{5-5}
+		& &  Z & & FZ-FB-Z-G \\ \cline{3-5}  \cline{5-5}
+		& &  X &  \multirow{3}{*}{-} & FZ-FB-X \\ \cline{3-3}  \cline{5-5}	
+		& &  Y & & FZ-FB-Y \\ \cline{3-3}  \cline{5-5}
+		& &  Z & & FZ-FB-Z \\ \hline \hline
+		
+		\multirow{7}{*}{unieruchomione} & arbitralny & - & - &  FJ-AB \\ \cline{2-5}
+		& \multirow{3}{*}{rotacyjny} &  X & $Rot_{X \rightarrow Z}$ & FJ-RB-X \\ \cline{3-5}
+		& &  Y & $Rot_{Y \rightarrow X}$ & FJ-RB-Y \\ \cline{3-5}
+		& &  Z & $Rot_{Z \rightarrow Y}$ & FJ-RB-Z \\ \cline{2-5}
+		& \multirow{3}{*}{liniowy} &  X &  $R^{2}: XZ$ &  FJ-LB-X \\ \cline{3-5}
+		& &  Y &  $R^{2}: XY$ & FJ-LB-Y \\ \cline{3-5}
+		& &  Z &  $R^{2}: XZ$ & FJ-LB-Z \\ 
+	\end{tabular}
+\end{center}
+
+\end{document}
