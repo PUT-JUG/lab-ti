@@ -50,6 +50,10 @@ Dopiero po instalacji środowiska MiKTeX można przystąpić do instalacji edyto
 
 Program ten podczas instalacji powinien sam wykryć środowisko MiKTeX w systemie. W przypadku problemów należy zgłosić się do prowadzącego zajęcia.
 
+**UWAGA** Domyślne skróty klawiszowe w programie mogą kolidować ze kombinacjami klawiszy używanymi do wstawiania polskich znaków diakrytycznych (np ś, Ź). W celu wyeliminowania tego problemu wejdź w ustawienia programu (menu *Options* → *Configure TexStudio...*) zakładka *Shortcuts*. Problematyczne komendy to: *Menus* → *File* → *Save All* oraz *Menus PDF-Viewer* → *View* → *External Viewer*. Deaktywuj przypisane tym poleceniom skróty klikając dwukrotnie na skrót w kolumnie *Current Shortcut*, kasując bieżące ustawienie klawiszem `Backspace` lub `Delete` i zatwierdzając klawiszem `Enter`:
+
+![shortcuts](_images/00/shortcuts.png)
+
 ---
 
-Autorzy: *Rafał Kabaciński*, *Tomasz Mańkowski*
+Autorzy: *Rafał Kabaciński*, *Tomasz Mańkowski*, *Jakub Tomczyński*
