@@ -43,12 +43,12 @@
 Tabele i rysunki są automatycznie wstawiane z justowaniem do lewej strony. W celu ich wyśrodkowania możemy użyć otoczenia \emph{center}:
 
 \begin{lstlisting}[language=TeX]
-	\begin{center}
-		\begin{tabular}{|c|c|}
-			\hline a & b \\ \hline
-			c & d \\ \hline
-		\end{tabular}
-	\end{center}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline a & b \\ \hline
+		c & d \\ \hline
+	\end{tabular}
+\end{center}
 \end{lstlisting}
 
 Uzyskując: 
@@ -59,6 +59,20 @@ Uzyskując:
 		c & d \\ \hline
 	\end{tabular}
 \end{center}
+
+W otoczeniach pływających możemy skorzystać z polecenia \lstinline|\centering|:
+
+\begin{lstlisting}[language=TeX]
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=3cm]{miktex_logo.png}
+\end{figure}
+\end{lstlisting}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=3cm]{miktex_logo.png}
+\end{figure}
 
 \section{Zaawansowane tabele}
 
@@ -78,7 +92,7 @@ Kiedy do dokumentu \LaTeX wstawimy tabelę zawierającą dużo tekstu nie zostan
 Problem możemy rozwiązać korzystając z atrybutu kolumny \emph{p}, po którym w nawiasach \lstinline|{}| podajemy szerokość kolumny. Dla powyższego przykładu:
 
 \begin{lstlisting}[language=TeX]
-	\begin{tabular}{ | l | l | l | p{5cm} |}
+\begin{tabular}{ | l | l | l | p{5cm} |}
 \end{lstlisting}
 
 Co daje następujący efekt:
