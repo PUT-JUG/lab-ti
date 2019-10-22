@@ -244,16 +244,79 @@ Następnie wyszukujemy repozytorium współautora programu i klikamy:
 
 ## Funkcje w Python
 
-**Pamiętaj aby po skończonych laboratoriach wylogować się z programu GitHub Desktop!** W tym celu wybierz *File* &rarr; *Options…* , a następnie w zakładce *Accounts* kliknij *Sign Out*.
+W celu zdefiniowania funkcji w Python korzystamy z słowa kluczowego `def`:
 
-Warto także usunąć lokalne repozytoria z dysku komputera i z programu GitHub Desktop. W tym celu wybierz odpowiednie repozytorium i z menu *Repository* wybierz *Remove*.
+```python
+def display_hello():
+    print("Hello Python!")
+```
 
-Możesz także usunąć repozytorium stworzone w czasie laboratorium, aby nie zaśmiecać swojego profilu na GitHub (*Settings* &rarr; *Options* &rarr; *Danger Zone* &rarr; *Delete this repository*).
+W celu wywołania funkcji używamy jej nazwy, a następie `()`:
 
-## Zadania
+```python
+display_hello()
+```
 
-- Czasami w czasie wspólnej pracy nad jednym plikiem może dojść do konfliktu. Dlaczego? W takiej sytuacji wykonywana jest operacja *merge*. Dowiedz czym jest *merge*, jak się go stosuje i jak sobie z tym radzić!
-- Zastanów się jakie pliki mogą znaleźć się w repozytorium? Czy odpowiednie jest wrzucanie plików .exe lub .bin? Czy można wrzucić do repozytorium projekt spakowany za pomocą .zip? Dlaczego odpowiedź na powyższe pytania jest przecząca? Które pliki definiujące projekt/środowisko programistyczne powinny znaleźć się w repozytorium?
+> Hello Python!
+
+Do funkcji możemy przekazać dowolną liczbę parametrów:
+
+```python
+def multi_display(string, count):
+    for i in range(count):
+        print(string)
+
+multi_display("Hello!", 4)
+```
+
+> Hello!  
+> Hello!  
+> Hello!  
+> Hello!
+
+Funkcje w Python mogą zwracać wartość, także więcej niż jedną:
+
+```python
+def third_power(val):
+    return val ** 3
+
+
+def powers(val):
+    second = val ** 2
+    third = val ** 3
+    fourth = val ** 4
+    return second, third, fourth
+
+
+print(third_power(2))
+
+p2, p3, p4 = powers(3)
+print(p2, p3, p4)
+```
+
+> 8  
+> 9 27 81
+
+## Zadanie końcowe :fire: :hammer:
+
+1. TODO
+
+
+**Pamiętaj aby po skończonych laboratoriach wylogować się z programu GitHub Desktop!** W tym celu wybierz *File* &rarr; *Options…* , a następnie w zakładce *Accounts* kliknij *Sign Out*. Warto także usunąć lokalne repozytoria z dysku komputera i z programu GitHub Desktop. W tym celu wybierz odpowiednie repozytorium i z menu *Repository* wybierz *Remove*.
+
+## Zadanie domowe :boom: :house:
+
+#### Zadanie 0
+
+Możesz usunąć repozytorium stworzone w czasie laboratorium, aby nie zaśmiecać swojego profilu na GitHub (*Settings* &rarr; *Options* &rarr; *Danger Zone* &rarr; *Delete this repository*).
+
+#### Zadanie 1
+
+Czasami w czasie wspólnej pracy nad jednym plikiem może dojść do konfliktu. Dlaczego? W takiej sytuacji wykonywana jest operacja *merge*. Dowiedz czym jest *merge*, jak się go stosuje i jak sobie z tym radzić!
+
+#### Zadanie 2
+
+Zastanów się jakie pliki mogą znaleźć się w repozytorium? Czy odpowiednie jest wrzucanie plików .exe lub .bin? Czy można wrzucić do repozytorium projekt spakowany za pomocą .zip? Dlaczego odpowiedź na powyższe pytania jest przecząca? Które pliki definiujące projekt/środowisko programistyczne powinny znaleźć się w repozytorium?
 
 ---
 
