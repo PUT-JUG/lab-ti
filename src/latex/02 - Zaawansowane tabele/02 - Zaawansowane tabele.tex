@@ -108,7 +108,7 @@ Co daje następujący efekt:
 
 \subsection{Scalanie komórek wielu kolumn}
 
-W celu scalenie komórek wielu kolumn wykorzystujemy komendę
+W celu scalenia komórek wielu kolumn wykorzystujemy komendę
 
 \begin{lstlisting}[language=TeX]
 \multicolumn{liczba_kolumn}{justowanie}{zawartość}
@@ -146,7 +146,7 @@ Przykładowo:
 
 \subsection{Scalanie komórek w wierszach}
 
-W celu scalenia komórek wierszach konieczne jest dodanie pakiety \lstinline|\usepackage{multirow}|. Komenda jest bliźniacza do komendy scalającej kolumny:
+W celu scalenia komórek wierszach konieczne jest dodanie pakietu \lstinline|\usepackage{multirow}|. Komenda jest bliźniacza do komendy scalającej kolumny:
 
 \begin{lstlisting}[language=TeX]
 \multirow{liczba_wierszy}{szerokość}{zawartość}|. 
@@ -184,7 +184,7 @@ W celu scalenia komórek wierszach konieczne jest dodanie pakiety \lstinline|\us
 
 \subsection{Wielokrotne linie pionowe i poziome}
 
-Wielokrotną pionową linię uzyskujemy wstawiając wielokrotny znak \lstinline||| w definicji justowania kolumn, pozioma pionowa linia uzyskiwana jest przez podwójne wstawienie wielokrotnego \lstinline|\hline|, przykładowo:
+Wielokrotną pionową linię uzyskujemy wstawiając wielokrotnie znak \lstinline||| w definicji justowania kolumn, wielokrotna pozioma linia uzyskiwana jest przez wstawienie wielokrotnego \lstinline|\hline|, przykładowo:
 
 \begin{lstlisting}
 \begin{tabular} {r || c | c }
@@ -209,7 +209,7 @@ Wielokrotną pionową linię uzyskujemy wstawiając wielokrotny znak \lstinline|
 
 \subsection{Częściowe linie poziome}
 
-Pozioma linie nie musi obejmować całej tabeli. Można wykorzystać \lstinline|\cline{X-Y}|, gdzie podajemy zakres kolumn dla których ma zostać wyświetlona linia pozioma:
+Pozioma linia nie musi obejmować całej tabeli. Można wykorzystać \lstinline|\cline{X-Y}|, gdzie podajemy zakres kolumn dla których ma zostać wyświetlona linia pozioma:
 
 \begin{lstlisting}
 \begin{tabular} { c | c | c  }
