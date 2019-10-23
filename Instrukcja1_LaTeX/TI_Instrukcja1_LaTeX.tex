@@ -1,0 +1,740 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\let\babellll\lll
+\let\lll\relax
+\usepackage{polski}
+\usepackage{graphicx}
+\usepackage{todonotes}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage[backend=biber]{biblatex}
+
+\usepackage[unicode,breaklinks,pdfusetitle,colorlinks=true]{hyperref}
+\hypersetup{pdfproducer={Latex with hyperref},pdfcreator={pdflatex},allcolors=[rgb]{0,0,0.4}}
+\addto\captionspolish{\renewcommand{\figurename}{Ilustracja}}
+
+\author{Rafał Kabaciński}
+\title{Technologie informacyjne\\Wprowadzenie do \LaTeX a}
+
+\newcommand{\zadanie}[1]{\todo[inline,color=teal!20]{Zadanie: #1}}
+\newcommand{\uwaga}[1]{\todo[inline,color=red!30]{Uwaga: #1}}
+
+\lstset{
+	literate=%
+	{ą}{{\k{a}}}1
+	{Ą}{{\k{A}}}1
+	{ć}{{\'c}}1
+	{Ć}{{\'{C}}}1
+	{ę}{{\k{e}}}1
+	{Ę}{{\k{E}}}1
+	{ł}{{\l{}}}1
+	{Ł}{{\L{}}}1
+	{ń}{{\'n}}1
+	{Ń}{{\'N}}1
+	{ó}{{\'o}}1
+	{Ó}{{\'O}}1
+	{ś}{{\'s}}1
+	{Ś}{{\'S}}1
+	{ż}{{\.z}}1
+	{Ż}{{\.Z}}1
+	{ź}{{\'z}}1
+	{Ź}{{\'Z}}1
+}
+
+\addbibresource{bibliografia.bib}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\section{Czym jest \LaTeX}
+	\LaTeX jest zestawem makr dla języka i kompilatorów \TeX . Z punktu widzenia użytkownika jest to język znaczników, jak HTML, czy XML, czyli język pozwalający zapisać nie tylko treść dokumentu ale również jego wygląd. W porównaniu do edytorów WYSIWYG (ang. what you see is what you get) pozwala na uzyskanie większej kontroli nad wyglądem dokumentu, oraz wymusza nadanie jednolitej struktury. Dzięki temu łatwe jest pisanie spójnych stylistycznie dokumentów oraz zautomatyzowane tworzenie różnego typu spisów lub odnośników. Wadą takiego podejścia do pisania dokumentów jest często duży nakład pracy potrzebny do głębokiego zmodyfikowania, lub przygotowania nowego stylu.
+	
+	Więcej informacji na temat \LaTeX a można znaleźć w następujących źródłach:
+	\begin{itemize}
+		\item bezpłatny podręcznik, w języku angielskim: \cite{lshort2e},
+		\item polskie tłumaczenie powyższego podręcznika: \cite{lshort2ePL},
+		\item polski podręcznik na portalu WikiBooks: \cite{WikiBook},
+		\item dokumentacja portalu Overleaf: \cite{overleaf}.
+	\end{itemize}
+	
+	
+	\section{Rozpoczęcie pracy w \LaTeX u}
+	Dokumenty w \LaTeX u pisane są w osobnym pliku, nazywanym plikiem źródłowym, względem dokumentu wynikowego. Aby uzyskać plik wynikowy w żądanym formacie, jak na przykład \textit{pdf}, konieczna jest kompilacja pliku źródłowego.
+	
+	\zadanie{W instrukcji pojawiać się będą bloki takie jak ten, w których będą umieszczone zadania do wykonania. Prawidłowe wykonanie wszystkich poleceń pozwoli wygenerować dokument taki sam jak załączony do poniższej instrukcji dokument przykładowy.}
+	
+	\subsection{Struktura dokumentu}
+	Pliki źródłowe \LaTeX a muszą składać się z \emph{preambuły} i \emph{ciała} dokumentu. We współczesnych edytorach można znaleźć kreatory pozwalające wstawić gotową strukturę bez konieczności samodzielnego wpisywania wszystkich elementów. Na ilustracji \ref{rys:TS:kreator1} zaprezentowano gdzie można znaleźć taki kreator w programie TeXstudio.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/TeXstudio_Kreator1.png}
+		\caption{Umiejscowienie kreatora dokumentów w programie TeXstudio}
+		\label{rys:TS:kreator1}
+	\end{figure}
+	
+	Po uruchomieniu kreatora pojawia się okno zaprezentowane na ilustracji \ref{rys:TS:kreator2}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/TeXstudio_Kreator2.png}
+		\caption{Okno kreatora dokumentów w programie TeXstudio}
+		\label{rys:TS:kreator2}
+	\end{figure}
+	
+	\zadanie{Utwórz nowy dokument za pomocą kreatora w programie TeXstudio korzystając z ustawień jak na ilustracji \ref{rys:TS:kreator2}.}
+	
+	Preambuła to wszystko co rozpoczyna się od komendy \verb|\documentclass| i kończy na komendzie \verb|\begin{document}|. Ciało dokumentu zawiera się wewnątrz otoczenia \verb|document|, czyli znajduje się pomiędzy komendami \verb|\begin{document}| a \verb|\end{document}|. W preambule definiuje się styl dokumentu i dodaje pakiety rozszerzeń. Dobrą praktyką jest definiowanie nowych komend tylko w preambule, ale nie jest to wymagane. Ciało dokumentu zawiera treść wraz ze znacznikami formatowania. Nie można wprowadzać tekstu poza ciałem dokumentu, przeważnie uniemożliwi to kompilację.
+	
+	Główne okno TeXstudio zaprezentowano na ilustracji \ref{rys:TS:Okno}. W jego skład wchodzi pasek menu i narzędzi (domyślnie u góry), panel boczny (domyślnie po lewej), okno edytora (domyślnie po środku), okno komunikatów (domyślnie na dole) i okno podglądu (domyślnie po prawej). Aby skompilować dokument należy kliknąć przyciski oznaczone pojedynczym bądź podwójnym zielonym trójkątem (patrz ilustracja \ref{rys:TS:Kompilacja}). Ikona z pojedynczym trójkątem oznacza samą kompilację, natomiast z podwójnym kompilację i podgląd.
+	
+	\uwaga{aby pojawił się podgląd dokument musi zostać skompilowany z powodzeniem. Jeżeli ciało dokumentu jest puste dokument nie zostanie skompilowany.}
+	\uwaga{Okno podglądu pokazuje wynik ostatniej udanej kompilacji. Informację czy kompilacja zakończyła się powodzeniem można znaleźć w oknie komunikatów!}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/TeXstudio_Okno1.png}
+		\caption{Okno programu TeXstudio}
+		\label{rys:TS:Okno}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/TeXstudio_kompilacja.png}
+		\caption{Przyciski kompilacji w programie TeXstudio}
+		\label{rys:TS:Kompilacja}
+	\end{figure}
+
+	Preambuła wstawiona przez edytor zawiera od razu kilka pakietów. Pierwszym z nich jest pakiet \verb|\usepackage[utf8]{inputenc}| informujący kompilator o kodowaniu pliku źródłowego. Po utworzeniu pliku nie należy zmieniać oznaczenia kodowania, gdyż uniemożliwi to kompilację dokumentu! 
+
+	\zadanie{Skompiluj z powodzeniem swój pierwszy dokument w \LaTeX u.}
+	
+	\uwaga{\LaTeX jest zbiorem wielu osobnych programów, wymieniających ze sobą informacje za pomocą plików tymczasowych pojawiających się w tym samym folderze co plik kompilowany. Z tego względu dobrą praktyką jest umieszczanie tych dokumentów w osobnych folderach.}
+	
+	\subsection{Komendy w \LaTeX u}
+	
+	Komenda w \LaTeX u składa się z ukośnika wstecznego: ,,$\backslash$'' i ciągu literowo--cyfrowego, każdy inny znak w tym spacje przerywa komendę. Jeżeli komenda przyjmuje argumenty obowiązkowe znajdują się one pomiędzy znakami nawiasów klamrowych: ,,\{\}''. Argumenty opcjonalne umieszczane są w nawiasach kwadratowych: ,,[]''. Kolejność występowania nawiasów zależy od komendy, dlatego warto korzystać z podpowiedzi oferowanych przez współczesne edytory. Przykład takich podpowiedzi zaprezentowano na ilustracji \ref{rys:TS:Podpowiedzi}. Wyboru wariantu dokonuje się strzałkami na klawiaturze i potwierdza klawiszem \emph{enter}.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/TeXstudio_podpowiedzi.png}
+		\caption{Podpowiedzi w edytorze TeXstudio}
+		\label{rys:TS:Podpowiedzi}
+	\end{figure}
+	
+	\subsection{Pisanie dokumentów w języku polskim}
+	
+	Drugim pakietem wstawionym przez kreator jest \verb|\usepackage[T1]{fontenc}| informujący kompilator o kodowaniu czcionek w dokumencie wynikowym. Dla języka polskiego prawidłowym zestawem jest \emph{T1}. Brak tego pakietu lub ustawienie niewłaściwej opcji spowoduje błędy w kompilacji lub wstawienie niewłaściwych liter w miejsce polskich znaków diakrytyzowanych. Trzecim pakietem jest pakiet \verb|\usepackage[polish]{babel}|. Pakiet ten pozwala na dostosowanie między innymi podziału słów między wierszami według reguł języka polskiego. Oprócz powyższych warto dodać jeszcze trzeci pakiet: \verb|\usepackage{polski}|, dostosowujący pozostałe aspekty \LaTeX a.
+	
+	\zadanie{Dodaj, korzystając z podpowiedzi edytora, pakiet polski i skompiluj dokument.}
+	
+	\uwaga{Pakiety w \LaTeX u są pisane przez niezależnych autorów i może między nimi dochodzić do konfliktów. Czasem pakiety są w stanie koegzystować bez konieczności ingerencji w ich makra, o ile są dodane w określonej kolejności. Przykładem jest pakiet \emph{babel} z opcją \emph{polish} i pakiet \emph{amssymb}. Jeżeli pakiet AMS jest dodany przed pakietem babel dokument można skompilować, w odwrotnej kolejności prowadzi to do błędu. Najbezpieczniejszą strategią jest dodawanie nieznanych pakietów pojedynczo.}
+
+	 
+	\section{Podstawy pisania dokumentów w \LaTeX u}
+	\subsection{Tytuł i autor}
+	
+	Elementy należące do struktury dokumentu, takie jak na przykład jego tytuł, nie powinny być formatowane wprost lecz należy skorzystać z odpowiednich funkcji do ich wywołania. Aby zdefiniować zawartość tytułu należy użyć poleceń:
+	\begin{itemize}
+		\item \verb|\title{}| -- definiuje tytuł dokumentu,
+		\item \verb|\author{}| -- definiuje autora/autorów,
+		\item \verb|\date{}| -- zmienia datę pod tytułem.
+	\end{itemize}
+	\zadanie{zdefiniuj tytuł i autora swojego dokumentu i go skompiluj. Czy tytuł się pojawił?}
+	Powyższe komendy definiują zawartość powyższych pól w dokumencie ale nie wstawiają samego tytułu. Poleceniem, które umieści tytuł jest komenda:
+	\begin{lstlisting}
+		\maketitle
+	\end{lstlisting}
+	Tytuł pojawi się w dokumencie w miejscu wywołania tego polecenia. Komenda \verb|\date{}| różni się od pozostałych, gdyż nawet przy braku zdefiniowanej daty zostanie wstawiona data kompilacji. Polecenia tego używa się gdy konieczna jest zmiana daty.
+	\zadanie{Skompiluj dokument z tytułem}
+	
+	
+	\subsection{Spis treści}
+	\zadanie{Od tego momentu nie kompiluj dokumentu dopóki nie pojawi się takie polecenie w  zadaniu}
+	
+	Jedną z głównych zalet \LaTeX a jest zautomatyzowane tworzenie list takich jak spis treści. Dostępne są następujące poziomy podziału dokumentu:
+	\begin{itemize}
+		\item \verb|\part{tytuł}| -- część,
+		\item \verb|\chapter{tytuł}| -- rozdział, dostępny tylko w dokumentach typu książka (book) i raport (report),
+		\item \verb|\section{tytuł}| -- sekcja,
+		\item \verb|\subsection{tytuł}| -- podsekcja,
+		\item \verb|\subsubsection{tytuł}| -- podpodsekcja,
+		\item \verb|\paragraph{tytuł}| -- paragraf,
+		\item \verb|\subparagraph{tytuł}| -- podparagraf.
+	\end{itemize}
+	W dokumentach typu list (letter) nie są dostępne żadne stopnie podziału.
+	
+	Komendą jaka wstawia spis treści do dokumentu jest:
+	\begin{lstlisting}
+		\tableofcontents
+	\end{lstlisting}
+	Polecenie to wstawi spis treści w miejscu w którym zostanie umieszczone w ciele dokumentu.
+	\zadanie{Umieść w swoim dokumencie polecenie \lstinline|tableofcontents| i przepisz pierwsze dwie sekcje z dokumentu przykładowego. Dopiero wtedy skompiluj dokument. Do tytułu jednej z sekcji dopisz losową literę i skompiluj dokument jeszcze raz. Gdzie pojawiła się losowa litera dopisana do tytułu? Czy kolejna kompilacja rozwiązuje problem?}
+	
+	W tytułach sekcji w dokumencie przykładowym wykorzystano logo \LaTeX a. Poleceniem wstawienia takiego loga jest \verb|\LaTeX|.
+	\uwaga{Nazwy poleceń w \LaTeX u są wrażliwe na wielkość liter! polecenie \emph{LaTeX} to nie to samo co \emph{latex}!}
+	\zadanie{Wstaw loga \LaTeX do swoich tytułów sekcji. Czy wyglądają tak jak w dokumencie przykładowym?}
+	\LaTeX\ ignoruje białe znaki po komendach. Jeżeli potrzebna jest spacja po komendzie należy użyć polecenia wstawienia spacji: ,,\verb|\ |''.
+	
+	
+	\subsection{Otoczenia}
+	
+	Ważnym elementem \LaTeX a są tak zwane otoczenia. Przeważnie korzystają one z konstrukcji:
+	\begin{lstlisting}
+		\begin{Nazwa_otoczenia}
+			zawartość...
+		\end{Nazwa_otoczenia}
+	\end{lstlisting}
+	Istotną cechą otoczeń jest to, że muszą się nawzajem otaczać, nie mogą się przecinać! W związku z tym niedozwolona jest na przykład taka konstrukcja:
+	\begin{lstlisting}
+		\begin{Otoczenie1}
+			\begin{Otoczenie2}
+			
+		\end{Otoczenie1}
+			\end{Otoczenie2}
+	\end{lstlisting}
+	
+	Przykładem otoczenia jest środowisko do pisania list wypunktowanych:
+	\begin{lstlisting}
+		\begin{itemize}
+			\item Treść punktu 1
+			\item Treść punktu 2
+		\end{itemize}
+	\end{lstlisting}
+	Siostrzanym środowiskiem jest otoczenie dla list numerowanych:
+	\begin{lstlisting}
+		\begin{enumerate}
+			\item Treść punktu 1
+			\item Treść punktu 2
+		\end{enumerate}
+	\end{lstlisting}
+	\zadanie{Odtwórz w swoim dokumencie listę wypunktowaną z dokumentu przykładowego.}
+	
+	\subsection{Formatowanie tekstu}
+	
+	W dokumentach pisanych w \LaTeX u nie jest dobrą praktyką, aby zmieniać lokalnie formatowanie lub rozmiar czcionek, gdyż prowadzi to do powstania niespójności stylistycznych. Zmian takich należy dokonywać na poziomie stylu całego dokumentu, na przykład poprzez zmianę rozmiaru czcionki w argumencie opcjonalnym polecenia \verb|\documentclass[arg. opcjonalne]{typ dokumentu}|.
+	
+	Czasem konieczne są jednak pewne zmiany, aby wyróżnić pewne fragmenty tekstu i \LaTeX\ udostępnia takie narzędzia:
+	\begin{itemize}
+		\item \verb|\emph{tekst}| -- wyróżnia tekst, sposób wyróżnienia zależny jest od stylu dokumentu,
+		\item \verb|\textbf{tekst}| -- pogrubia czcionkę,
+		\item \verb|\textit{tekst}| -- pochyla czcionkę,
+		\item \verb|\underline{tekst}| -- podkreśla tekst,
+	\end{itemize}
+
+	Możliwe jest też lokalne zdefiniowanie rozmiaru tekstu:
+	\begin{itemize}
+		\item \verb|\Huge| -- {\Huge tekst},
+		\item \verb|\huge| -- {\huge tekst},
+		\item \verb|\LARGE| -- {\LARGE tekst},
+		\item \verb|\Large| -- {\Large tekst},
+		\item \verb|\large| -- {\large tekst},
+		\item \verb|\normalsize| -- {\normalsize tekst},
+		\item \verb|\small| -- {\small tekst},
+		\item \verb|\footnotesize| -- {\footnotesize tekst},
+		\item \verb|\scriptsize| -- {\scriptsize tekst},
+		\item \verb|\tiny| -- {\tiny tekst},
+	\end{itemize}
+	
+	\uwaga{Powyższe polecenia zmieniają rozmiar w całym otoczeniu w którym zostaną użyte! Aby ograniczyć ich zasięg, należy umieszczać je wraz z tekstem w nawiasach klamrowych.}
+	
+	\section{Formuły matematyczne}
+	
+	Język \LaTeX\ znany jest z bardzo rozbudowanego systemu do składu formuł matematycznych, który wykorzystywany jest w innych środowiskach, jak na przykład Matlab czy Python. Same formuły matematyczne w \LaTeX u muszą być umieszczone w odpowiednich otoczeniach matematycznych których są trzy rodzaje:
+	\begin{itemize}
+		\item \verb|$\sin x$| -- pojedyncze dolary umieszczają formułę w linii wraz z tekstem: $\sin x$
+		\item \verb|$$\sin x$$| -- podwójne dolary umieszczają formułę w osobnej linii: $$\sin x$$
+		\item \verb|\begin{equation}\sin x\end{equation}| -- otoczenie \emph{equation} umieszcza formułę w osobnej linii i nadaje jej numer: \begin{equation}\sin x\end{equation}
+	\end{itemize}
+
+	Tylko otoczenia \emph{equation} pozwalają na wykorzystanie polecenia \emph{label} i odwołanie się do danej formuły.
+	
+	\uwaga{Wewnątrz otoczeń matematycznych nie wolno zostawiać pustych linii. Może prowadzić to do nieoczekiwanych błędów!}
+	
+	Przy pisaniu formuł matematycznych przydatny jest przybornik z symbolami matematycznymi dostępny w programie TeXstudio. Dostęp do niego można uzyskać klikając jego ikonę na panelu bocznym, co zaprezentowano na ilustracji~\ref{rys:TS:Symbole}. Zakres wyświetlanych symboli można ograniczyć przyciskiem z prawej strony panelu.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/TeXstudio_Symbole.png}
+		\caption{Przybornik z symbolami matematycznymi w TeXstudio}
+		\label{rys:TS:Symbole}
+	\end{figure}
+	
+	Podstawowe polecenia przydatne przy pisaniu formuł matematycznych:
+	\begin{itemize}
+		\item \verb|$x^{2b}$ | = $x^{2b}$,
+		\item \verb|$x_{2b}$ | = $x_{2b}$,
+		\item \verb|$\frac{a}{b}$ | = $\frac{a}{b}$,
+		\item \verb|$\int i(t) dt$ | = $\int i(t) dt$,
+		\item \verb|$\int\limits_{-T}^{T}i(t)dt$| = $\int\limits_{-T}^{T} i(t)dt$.
+	\end{itemize}
+	
+	\zadanie{Odwzoruj pierwszy wzór matematyczny z dokumentu do odtworzenia. W jakim otoczeniu matematycznym został on zapisany?}
+	
+	W \LaTeX u nawiasy okrągłe i kwadratowe w formułach matematycznych można stosować wprost: $(),[]$. W przypadku nawiasów klamrowych należy poprzedzić je ukośnikami wstecznymi. Na przykład \verb|$\{ \}$|, daje: $\{\}$. Nawiasy takie jednak nie dostosują swoich rozmiarów do zawartości. Aby uzyskać taki efekt należy użyć poleceń \verb|\left| i \verb|\right|:
+	
+	 \verb|$\left(\frac{a}{b}\right)$| = $\left(\frac{a}{b}\right)$. 
+	 
+	 Polecenia te tworzą otoczenie nawiasowe, w związku z czym nie mogą się przecinać z innymi otoczeniami. Znaki nawiasów nie muszą sobie odpowiadać, można otworzyć otocznie nawiasem okrągłym i~zamknąć kwadratowym: \verb|$\left(\frac{a}{b}\right]$| = $\left(\frac{a}{b}\right]$. Jeżeli nie chcemy aby z którejś strony pojawił się znak nawiasu należy użyć kropki, samo otoczenie musi jednak zostać zamknięte: \verb|$\left\{\frac{a}{b}\right.$| = $\left\{\frac{a}{b}\right.$.
+	
+	Aby odtworzyć drugi wzór z dokumentu przykładowego konieczne będzie otoczenie \emph{array}. Służy ono do definiowania tabel w trybie matematycznym. Przyjmuje ono jeden argument obowiązkowy w którym definiuje się liczbę i~wyjustowanie kolumn. W tym celu dostępne są trzy litery: \emph{l} -- kolumna wyjustowana do lewej,  \emph{c} -- kolumna wyjustowana do środka, \emph{r} -- kolumna wyjustowana do prawej. Do separacji komórek wewnątrz tabeli służy znak ampersand: ,,\&''. Przejście do nowego wiersza jest oznaczone podwójnym ukośnikiem wstecznym: ,,\verb|\\|''. Przykładowo układ 2 na 2 elementy, wyjustowane do środka, będzie zdefiniowany następująco:
+	
+	\begin{tabular}{cc}
+		\begin{lstlisting}
+		$\begin{array}{cc}
+		a & b \\ c & d
+		\end{array}$
+		\end{lstlisting}
+		&
+		$\begin{array}{cc}
+		a & b \\ c & d
+		\end{array}$
+	\end{tabular}
+	
+	
+	\zadanie{Spróbuj odtworzyć wzór na macierz rotacji z dokumentu do odtworzenia.}
+	
+	\section{Tabele i rysunki}
+	
+	\subsection{Tabele}
+	
+	
+	Tabele w trybie tekstowym definiuje się za pomocą otoczenia \emph{tabular}, które  działa tak samo jak otoczenie \emph{array} w trybie matematycznym. Linie oddzielające kolumny uzyskać można wstawiając znak kreski pionowej: ,,|'' między literami definiującymi kolumny. Z kolei linie poziome uzyskuje się za pomocą komendy \verb|\hline| pomiędzy wierszami:
+	
+	\begin{center}
+	\begin{tabular}{cc}
+		\begin{tabular}{c}
+		\begin{lstlisting}
+\begin{tabular}{|c|c|}
+\hline
+a & b \\ \hline
+c & d \\ \hline
+\end{tabular}
+		\end{lstlisting}
+		\end{tabular}
+		&
+		\begin{tabular}{|c|c|}
+			\hline a & b \\ \hline
+			 c & d \\ \hline
+		\end{tabular}
+	\end{tabular}
+	\end{center}
+
+	Tabela zdefiniowana za pomocą otoczenia \emph{tabular} jest traktowana tak jak tekst i może być wstawiona nawet w środku linii: \begin{tabular}{|c|c|}
+		\hline
+		a & b \\ \hline
+		c & d \\ \hline
+	\end{tabular}.
+	Aby wyróżnić tabelę z tekstu należy umieścić ją w otoczeniu pływającym \emph{table}:
+	\begin{lstlisting}
+\begin{table}
+	\begin{tabular}{|c|c|}
+		\hline
+		a & b \\ \hline
+		c & d \\ \hline
+	\end{tabular}
+\end{table}
+	\end{lstlisting}
+	
+	\zadanie{Zdefiniuj własną tabelę w otoczeniu pływającym. Gdzie się pojawiła w dokumencie po kompilacji?}
+	
+	Otoczenia pływające przyjmują argument opcjonalny informujący o pożądanym położeniu. Dostępne są następujące litery:
+	\begin{itemize}
+		\item h -- w miejscu w którym jest w kodzie,
+		\item t -- u góry strony,
+		\item b -- na dole strony,
+		\item p -- na osobnej stronie z tabelami,
+	\end{itemize}
+	Powyższe argumenty są jednak jedynie sugestiami, a tabela może zostać umieszczona dowolnie. Znak wykrzyknika za parametrem położenia pozwala dodatkowo poluzować ustawienia \LaTeX a, ale nadal nie jest bezwzględnym nakazem. Przykład:
+	
+	\begin{lstlisting}
+\begin{table}[h!]
+	\begin{tabular}{|c|c|}
+	a & b \\ \hline
+	c & d \\ \hline
+	\end{tabular}
+\end{table}
+	\end{lstlisting}
+	\zadanie{Sprawdź czy dodanie parametru położenia przeniesie Twoją tabelę w prawidłowe miejsce.}
+	
+	Wewnątrz otoczeń pływających, do opisu zawartości, służy polecenie \verb|\caption{}|:
+	
+	\begin{lstlisting}
+\begin{table}[h!]
+\caption{Przykład}
+	\begin{tabular}{c|c}
+		a & b \\ \hline
+		c & d
+	\end{tabular}
+\end{table}
+	\end{lstlisting}
+	
+	\zadanie{Odtwórz tabelę z dokumentu przykładowego.}
+	
+	\subsubsection{Zaawansowane kwestie związane z tabelami}
+		
+		W języku \LaTeX\ nie ma możliwości dzielenia komórek tabeli, możne je jedynie łączyć. Z tego powodu konieczne jest zadeklarowanie zawsze maksymalnej liczby kolumn jaka pojawi się w tabeli. Do łączenia komórek w wierszu służy polecenie \verb|\multicolumn{num}{pos}{text}|. Pierwszy argument deklaruje ile komórek ma zostać połączonych. Drugi jak wyjustowana ma być połączona komórka, opcje takie same jak przy definiowaniu kolumn. Trzeci argument zawiera treść nowej połączonej komórki. 
+		
+		\begin{center}
+			\begin{tabular}{cc}
+				\begin{tabular}{c}
+					\begin{lstlisting}
+\begin{tabular}{|c|c|}
+	\hline
+	\multicolumn{2}{|c|}{a} \\ \hline
+	1 & 2 \\ \hline
+\end{tabular}
+					\end{lstlisting}
+				\end{tabular}
+				&
+				\begin{tabular}{|c|c|}
+					\hline
+					\multicolumn{2}{|c|}{a} \\ \hline
+					1 & 2 \\ \hline
+				\end{tabular}
+			\end{tabular}
+		\end{center}
+	
+	\uwaga{Liczba kolumn w każdym wierszu musi się zgadzać z deklarowaną w definicji tabeli. W związku z tym kożystająć z polecenie \emph{multicolumn} należy usunąć odpowiednią liczbę znaków \emph{\&} z wiersza!}
+	
+	Siostrzaną komendą jest \verb|\multirow{num}{width}{text}|. W tym przypadku pierwszy argument również definiuje liczbę wierszy do połączenia. Drugi argument definiuje szerokość nowej komórki, przy czym \verb|*| oznacza dostoswanie szerokości do zawartości. Trzeci argument zawiera treść połączonej komórki. Polecenia \verb|multirow| należy użyć w pierwszym wierszu z połączonych komórek, a pozostałe zostawić puste:
+	
+\begin{center}
+	\begin{tabular}{cc}
+		\begin{tabular}{c}
+			\begin{lstlisting}
+\begin{tabular}{|c|c|}
+	\hline
+	\multirow{2}{*}{a} & 1 \\ \cline{2-2}
+	 & 2 \\ \hline
+\end{tabular}
+			\end{lstlisting}
+		\end{tabular}
+		&
+\begin{tabular}{|c|c|}
+	\hline
+	\multirow{2}{*}{a} & 1 \\ \cline{2-2}
+	& 2 \\ \hline
+\end{tabular}
+	\end{tabular}
+\end{center}
+
+Dla połączonych wierszy konieczne jest zastosowanie komendy \verb|\cline{od-do}| zamiast \verb|\hline|. Linia pozioma przecięłaby połączone komórki. W poleceniu \verb|cline| w argumencie obowiązkowym deklaruje się pomiędzy którymi kolumnami ma ona się rozpościerać.
+
+\uwaga{Aby móc korzystać z polecenie \emph{multirow}, należy dodać pakiet \emph{multirow}.}
+	
+	
+	Domyślne formatowanie kolumn w \LaTeX u nie pozwala na przenoszenie tekstu do nowej linii, w związku z czym tabele mogą nie mieścić się w obszarze wydruku:
+	
+	\begin{tabular}{|c|c|}
+		\hline
+		a & To jest bardzo długi tekst, który nie zmieści się w jednej linijce i trzeba go podzielić. \\ \hline
+		1 & 2 \\ \hline
+	\end{tabular}
+	
+	Aby temu zaradzić należy zastosować inny typ definicji kolumny, pozwalający na zdefiniowanie jej szerokości:
+	
+	\begin{center}
+	\begin{lstlisting}
+\begin{tabular}{|c|p{0.75\textwidth}|}
+   \hline
+   a & To jest bardzo długi tekst, który nie zmieści
+    się w jednej linijce i trzeba go podzielić.\\ \hline
+   1 & 2 \\ \hline
+\end{tabular}
+	\end{lstlisting}
+
+	\begin{tabular}{|c|p{0.75\textwidth}|}
+		\hline
+		a & To jest bardzo długi tekst, który nie zmieści się w jednej linijce i trzeba go podzielić.\\ \hline
+		1 & 2 \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	\uwaga{Polecenie \emph{textwidth} zwraca szerokość tekstu w bieżącym obszarze dokumentu. Przed nim należy wpisać liczbę od $0$ do $1$. Koniecznie należy użyć notacji z kropką zamiast przecinka!}
+	
+	\subsection{Rysunki}
+
+	Otoczeniem pływającym dla ilustracji jest otoczenie \emph{figure}. Same ilustracje można wstawić za pomocą polecenia:
+	
+	\begin{lstlisting}
+\includegraphics[argumenty opcjonalne]{ścieżka do pliku}
+	\end{lstlisting}
+	
+	 Ścieżki do pliku mogą być względne lub bezwzględne. Zalecane jest umieszczanie plików z rysunkami w tym samym folderze co kompilowany plik, lub podfolderze i podanie ścieżki względnej:
+	
+	\begin{lstlisting}
+\includegraphics{Rys/pp-putlogopelne.png}
+	\end{lstlisting}
+	
+	Foldery oddziela się znakiem ukośnika: ,,/''. W celu wyjustowania rysunku do środka można użyć polecenia \verb|\centering|, które wyśrodkuje wszystko wewnątrz otoczenia w którym zostało użyte. Aby zmienić rozmiar rysunku, należy wpisać polecenie: \verb|width=0.5\textwidth|, które dostosuje szerokość rysunku do połowy szerokości tekstu:
+	
+	\begin{lstlisting}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]
+	{Rys/pp-putlogopelne.png}
+	\caption{Przykładowy rysunek}
+\end{figure}
+	\end{lstlisting}
+	
+	\zadanie{Odtwórz rysunek z dokumentu przykładowego.}
+	
+	\subsection{Odwołania do obiektów}
+	
+	Aby odwołać się w dokumencie do danego rysunku bądź tabeli pod poleceniem \verb|\caption{}| należy umieścić polecenie \verb|\label{etykieta}|. Następnie w miejscu w którym ma pojawić się odwołanie należy umieścić polecenie \verb|\ref{etykieta}|.
+	
+	\zadanie{Dodaj w tekście odwołania do rysunku i tabeli, jak w dokumencie przykładowym.}
+	
+	\section{Kod źródłowy w dokumentach}
+	
+	Aby wpisać kod źródłowy do dokumentu można skorzystać z podstawowego polecenia \verb/\verb|kod|/. Pozwala ono na wpisanie kodu, który nie będzie interpretowny przez \LaTeX a i będzie wyróżniony z tekstu. Wypisywany jest on za pomocą czcionki o stałej szerokości. Komenda ta pozwala jednak na wstawienie tylko pojedynczej linijki kodu. W przypadku bardziej rozbudowanego źródła, lub potrzeby kolorowania składni, dodać należy pakiet \verb|\usepackage{listings}|. Język, dla którego ma być kolorowana składnia, można ustawić za pomocą polecenia: \verb|\lstset{language=C++}| lub w argumentach opcjonalnych otoczenia z wstawianym kodem:
+	
+	\hspace{0.15\textwidth}
+	\begin{minipage}{0.75\textwidth}
+		\noindent\verb|\begin{lstlisting}[language=C++]|\\
+		\verb|for(int i=0;1<10;i++){}|\\
+		\verb|\end{lstlisting}|
+	\end{minipage}
+
+	Możliwe jest też wstawienie do dokumentu całego pliku z kodem źródłowym:
+	
+	\verb|\lstinputlisting[language=C++]{plik.cpp}|
+	
+	\zadanie{Przepisz kod źródłowy z przykładowego dokumentu, wraz z właściwym kolorowaniem, składni.}
+	
+	\section{Bibliografia}
+	
+	Pakiet \LaTeX\ zawiera narzędzie do generowania bibliografii według zdefiniowanych stylów. Do działania wymaga ono pliku tekstowego \emph{*.bib} zawierającego wpisy danych bibliograficznych cytowanych pozycji. Przykładowy wpis wygląda następująco:
+	
+	\begin{lstlisting}
+@manual{lshort2e,
+author   = "Tobias Oetiker et al.",
+title    = "A (Not So) Short Introduction to \LaTeXe",
+year     = "2018",
+url     = "\url{https://ctan.org/pkg/lshort-english}",
+}
+	\end{lstlisting}
+	
+	\subsection{Definowanie plików \emph{*.bib}}
+	
+	Każdy wpis zaczyna się od znaku \verb|@|, po którym znajduje się oznaczenie typu wpisu. Dostępne są następujące typy podstawowe:
+	
+	\begin{itemize}
+		\item article -- artykuły,
+			\begin{itemize}
+				\item pola wymagane: author, title, journal, year, volume,
+				\item pola opcjonalne: number, pages, month, doi, note, key,
+			\end{itemize}
+		\item book -- książki ze zdefiniowanym wydawcą
+		\begin{itemize}
+			\item pola wymagane: author/editor, title, publisher, year
+			\item pola opcjonalne: volume/number, series, address, edition, month, note, key, url
+		\end{itemize}
+		\item booklet -- książki bez zdefiniowanego wydawcy
+		\begin{itemize}
+			\item pola wymagane: title
+			\item pola opcjonalne:  author, howpublished, address, month, year, note, key
+		\end{itemize}
+		\item conference lub inproceedings -- pojedynczy artykuł z konferencji,
+		\begin{itemize}
+			\item pola wymagane: author, title, booktitle, year
+			\item pola opcjonalne: editor, volume/number, series, pages, address, month, organization, publisher, note, key
+		\end{itemize}
+		\item inbook -- fragment książki bez tytułu, np. kilka stron,
+		\begin{itemize}
+			\item pola wymagane: author/editor, title, chapter/pages, publisher, year
+			\item pola opcjonalne: volume/number, series, type, address, edition, month, note, key
+		\end{itemize}
+		\item incollection -- fragment książki z własnym tytułem, np. rozdział,
+		\begin{itemize}
+			\item pola wymagane: author, title, booktitle, publisher, year
+			\item pola opcjonalne: editor, volume/number, series, type, chapter, pages, address, edition, month, note, key
+		\end{itemize}
+		\item manual -- dokumentacja techniczna
+		\begin{itemize}
+			\item pola wymagane: title
+			\item pola opcjonalne: author, organization, address, edition, month, year, note, key
+		\end{itemize}
+		\item mastersthesis -- praca magisterska,
+		\begin{itemize}
+			\item pola wymagane: author, title, school, year
+			\item pola opcjonalne: type, address, month, note, key
+		\end{itemize}
+		\item misc -- publikacje nie pasujące do pozostałych typów,
+		\begin{itemize}
+			\item pola wymagane: brak
+			\item pola opcjonalne: author, title, howpublished, month, year, note, key
+		\end{itemize}
+		\item phdthesis --  rozprawa doktorska,
+		\begin{itemize}
+			\item pola wymagane: author, title, school, year
+			\item pola opcjonalne: type, address, month, note, key
+		\end{itemize}
+		\item proceedings -- materiały z konferencji,
+		\begin{itemize}
+			\item pola wymagane: title, year,
+			\item pola opcjonalne: editor, volume/number, series, address, month, publisher, organization, note, key
+		\end{itemize}
+		\item techreport -- raport techniczny,
+		\begin{itemize}
+			\item pola wymagane: author, title, institution, year
+			\item pola opcjonalne: type, number, address, month, note, key
+		\end{itemize}
+		\item unpublished -- materiały niepublikowane 
+		\begin{itemize}
+			\item pola wymagane: author, title, note,
+			\item pola opcjonalne: month, year, key.
+		\end{itemize}
+	\end{itemize}
+
+	Po oznaczeniu typu należy otworzyć nawias klamrowy grupujący pola wpisu. Pierwszym elementem rekordu jest etykieta, którą oznaczony będzie wpis. Następnie zdefiniować należy zawartość poszczególnych pól rekordów. Dostępne są następujące podstawowe typy pól:
+	
+	\begin{itemize}
+		\item address -- adres wydawcy,
+		\item author -- imiona i nazwiska autorów zapisane w konwencji:\\ \verb|Nazwisko1, Imię1 and Nazwisko2, Imię2 ...|,
+		\item booktitle -- tytuł książki w przypadkach gdy cytowany jest jej fragment,
+		\item chapter -- numer rozdziału/sekcji,
+		\item doi -- ang. digital object identifier -- identyfikator cyfrowy, numer ułatwiający znalezienie publikacji cyfrowych,
+		\item edition -- numer wydania książki,
+		\item editor -- imiona i nazwiska edytorów zapisane w konwencji:\\ \verb|Nazwisko1, Imię1 and Nazwisko2, Imię2 ...|,
+		\item howpublished -- sposób publikacji, stosowany dla niestandardowych metod publikacji,
+		\item institution -- instytucja odpowiedzialna za publikację inna niż wydawca,
+		\item journal -- nazwa czasopismo/magazynu,
+		\item key -- klucz używany do sortowania, pole ukryte stosowane przy niestandardowym sortowaniu,
+		\item month -- miesiąc publikacji,
+		\item note -- dodatkowe informacje,
+		\item number -- numer wydania czasopisma,
+		\item organization -- sponsor konferencji,
+		\item pages -- numery stron cytowanego fragmentu,
+		\item publisher -- nazwa wydawcy,
+		\item school -- nazwa uczelni w której powstała praca,
+		\item series -- nazwa serii wydawniczej,
+		\item title -- tytuł publikacji,
+		\item type -- pole pozwalające nadpisać typ publikacji,
+		\item volume -- numer woluminu,
+		\item year -- rok publikacji.
+	\end{itemize}
+
+	Zawartość pól musi być umieszczona w cudzysłowowy, a kolejne pola powinny być oddzielone przecinkiem. Powyższe typy publikacji oraz pól są obsługiwane przez standardowe style formatowania bibliografii. Style niestandardowe obsługują dodatkowe pola i typy. Często obsługiwane są pola \verb|issn| i \verb|isbn|.
+	
+	
+	Ze względu na powszechne wykorzystanie \LaTeX a w środowisku naukowym wiele stron pozwala na ściągniecie wpisów bibliograficznych do zapisanych na nich publikacji bezpośrednio w formacie BibTeX. Na stronie Google Books łącze do pliku \emph{*.bib} danej książki znajduje się u dołu strony z jej opisem (Ilustracja~\ref{rys:bib:GoogleBooks}). W przypadku wyszukiwarki publikacji naukowych i patentów Google Scholar (\url{scholar.google.com}) cytowania można ściągnąć po kliknięciu w ikonę cudzysłowowa przy wynikach wyszukiwania  (Ilustracja~\ref{rys:bib:GoogleScholar}). Na stronie przeglądarki publikacji stowarzyszenia IEEE (\url{ieeexplore.ieee.org}) łącze do cytowań znajduje się na belce u góry opisu publikacji (Ilustracja~\ref{rys:bib:IIEEEXplore}).
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/GoogleBooks.png}
+		\caption{Łącze do pliku \emph{*.bib} na stronie Google Books}
+		\label{rys:bib:GoogleBooks}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/GoogleScholar.png}
+		\caption{Łącze do pliku \emph{*.bib} na stronie Google Scholar}
+		\label{rys:bib:GoogleScholar}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/IeeeXplore.png}
+		\caption{Łącze do pliku \emph{*.bib} na stronie IEEE Xplore}
+		\label{rys:bib:IEEEXplore}
+	\end{figure}
+	
+	\subsection{Korzystanie z BibTeX}
+	
+	Bibliografię do dokumentu wstawia się za pomocą polecenia:
+	
+	\verb|\bibliography{Plik_bib}|
+	
+	Gdzie argumentem obowiązkowym są nazwy plików \emph{*.bib} oddzielone przecinkami, zapisane bez rozszerzenia. Bibliografia zostanie wstawiona w dokumencie w miejscu wywołania powyższej komendy. Wcześniej zdefiniowany powinien być styl bibliografii za pomocą polecenia:
+	
+	\verb|\bibliographystyle{nazwa_stylu}|
+	
+	Podstawowe style to:
+	\begin{itemize}
+		\item plain -- cytowania oznaczone numerami, sortowanie alfabetyczne,
+		\item unsrt -- cytowania oznaczone numerami, sortowanie według kolejności cytowania,
+		\item alpha -- cytowania oznaczone etykietami: \emph{Aut19} lub \emph{ABC19}, sortowanie alfabetyczne,
+		abbrv -- styl plain ale imiona autorów, nazwy miesięcy i nazwy czasopism są skracane.
+	\end{itemize}
+
+	Etykiety stylu \emph{alpha} tworzone są na bazie nazwiska (\emph{Aut19}) lub nazwisk autorów (\emph{ABC19}) i ostatnich dwóch cyfr roku publikacji.
+	
+	Oprócz podstawowych dostępne są style niestandardowe definiowane w plikach \emph{*.bst}. Pliki takie należy umieścić w folderze z kompilowanym dokumentem.
+	
+	\LaTeX\ umieszcza w bibliografii tylko te wpisy które zostaną zacytowane w treści dokumentu. Aby zacytować publikację należy użyć polecenia:
+	
+	\verb|\cite{etykieta}|
+	
+	W miejscu użycia powyższej komendy wstawione zostanie odwołanie do danej publikacji w literaturze. Możliwe jest wymuszenie pojawienia się wpisu na liście bibliograficznej bez konieczności umieszczania odwołania w tekście dokumentu za pomocą polecenia:
+	
+	\verb|\nocite{etykieta}|
+	
+	\zadanie{Dodaj literaturę do swojego dokumentu, na wzór dokumentu przykładowego}
+	\uwaga{Do prawidłowego sformatowania adresów stron internetowych konieczne jest dodanie pakietu \emph{url} i umieszczenie samego adresu w argumencie polecenia \emph{url{adres}}. Do umieszczania hiperłączy konieczne jest dodanie pakietu \emph{hyperref}.}
+	
+	
+	
+	%\subsection{BibLateX}
+	%biblatex - dla zaawansowanych z konfiguracją
+	
+	\section{Overleaf}
+	
+	Portal Overleaf pozwala na kolaboracyjne tworzenie dokumentów \LaTeX (\url{https://www.overleaf.com/}) przez internet. Pliki projektów umieszczone są na serwerach dostawcy i nie ma do nich bezpośredniego dostępu. Po zalogowaniu widoczna jest lista projektów, przycisk do dodawania nowych znajduje się u góry po lewej stronie (Ilustracja~\ref{rys:Overleaf:NowyProjekt}).
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/Overleaf1.png}
+		\caption{Przycisk dodawania nowych projektów na portalu Overleaf}
+		\label{rys:Overleaf:NowyProjekt}
+	\end{figure}
+
+	Okno aktywnego projektu składa się z kolejno od lewej: listy plików, edytora, okna podglądu dokumentu/komunikatów (Ilustracja~\ref{rys:Overleaf:OknoProjektow}). Przycisk kompilacji znajduje się nad oknem podglądu.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/Overleaf2.png}
+		\caption{Okno projektów na portalu Overleaf}
+		\label{rys:Overleaf:OknoProjektow}
+	\end{figure}
+
+	Samo okno podglądu może pokazywać dokument wynikowy lub komunikaty kompilacji. Przełącznik znajduje się obok przycisku kompilacji (Ilustracja~\ref{rys:Overleaf:PrzelacznikPodgladu}). W trybie podglądu dokumentu narzędzia zmiany przybliżenia pokazują się po zbliżeniu kursora w lewy górny róg subokna.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/Overleaf3.png}
+		\caption{Przełącznik podglądu na portalu Overleaf}
+		\label{rys:Overleaf:PrzelacznikPodgladu}
+	\end{figure}
+
+	Dokument wynikowy w formacie \emph{pdf} ściągnąć można za pomocą przycisku znajdującego się obok przełącznika podglądu (Ilustracja~\ref{rys:Overleaf:DownloadPDF}).
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/Overleaf4.png}
+		\caption{Łącze do dokumentu wynikowego na portalu Overleaf}
+		\label{rys:Overleaf:DownloadPDF}
+	\end{figure}
+
+	Zdarza się że z powodu błędów w kodzie dokumentu konieczne jest skasowanie plików tymczasowych blokujących możliwość ponownej kompilacji mimo poprawienia źródeł. Na portalu Overleaf służy do tego przycisk z ikoną kosza na samym dole listy komunikatów (Ilustracja~\ref{rys:Overleaf:KasowaniePlikowTym}).
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{Ilustracje/Overleaf5.png}
+		\caption{Przycisk kasowania plików tymczasowych na portalu Overleaf}
+		\label{rys:Overleaf:KasowaniePlikowTym}
+	\end{figure}
+	
+	\zadanie{Spróbuj odtworzyć dokument przykładowy na portalu Overleaf}
+	
+	%\section{Dla zainteresowanych}
+		%podział na pliki
+	
+	\printbibliography
+	
+\end{document}

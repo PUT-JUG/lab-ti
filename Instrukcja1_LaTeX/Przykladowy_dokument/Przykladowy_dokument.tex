@@ -1,0 +1,90 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{graphicx}
+\usepackage{polski} 
+\usepackage{listings}
+\usepackage{url}
+
+\title{Przykładowy dokument w \LaTeX u}
+\author{Rafał Kabaciński}
+
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\tableofcontents
+	
+	\section{\LaTeX\ w praktyce}
+	Ten dokument służy jako przykład jak łatwo można napisać pierwszy plik w \LaTeX u. 
+	
+	Każdy akapit, poza pierwszym, domyślnie rozpoczyna się wcięciem.
+	Nowy akapit można rozpocząć, oddzielając go od poprzedniego dwoma znakami \emph{enter} lub \verb|\\|.
+	
+	
+	
+	\LaTeX\ ignoruje        wiele powtarzających się ,,białych znaków''. Tak więc napisanie: \verb|słowo słowo| lub \verb|słowo          słowo| da taki sam efekt. Tak samo zignorowane zostanie więcej niż dwa znaki \emph{enter}.
+	
+	Zalety \LaTeX a:
+	\begin{itemize}
+		\item ułatwi pisanie spójnych stylistycznie długich dokumentów,
+		\item tworzenie list elementów, takich jak spis treści czy rysunków jest w nim łatwe,
+		\item można w nim pisać listy wypunktowane.
+	\end{itemize}
+
+	Więcej informacji można znaleźć w źródłach: \cite{lshort2e,lshort2ePL,WikiBook,overleaf}.
+	
+	\section{Formuły matematyczne w \LaTeX u}
+	
+	Wzór na odwrotną transformatę Fouriera:
+	\begin{equation}
+		f(x) = \lim \limits_{T\rightarrow + \infty} \int \limits_{-T}^{T} \hat f (\xi) e^{2\pi i x \xi} d\xi
+	\end{equation}
+	
+	Wzór na macierz rotacji w przestrzeni:
+	$$
+	Rot_X(\alpha) = \left[
+	\begin{array}{ccc}
+	1 & 0 & 0 \\
+	0 & \cos \alpha & -\sin \alpha \\
+	0 & \sin \alpha & \cos \alpha 
+	\end{array}\right]
+	$$
+	
+	\section{Tabele i rysunki}
+	
+	Przykładowa tabela: \ref{tab} i rysunek: \ref{rys}.
+	
+	\begin{table}[h!]
+		\centering
+		\caption{Przykładowa tabela}
+		\label{tab}
+		\begin{tabular}{c|c|c|c}
+			a & b & c & d \\ \hline
+			1 & 2 & 3 & 4
+		\end{tabular}
+	\end{table}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.75\textwidth]{Rys/pp-putlogopelne.png}
+		\caption{Przykładowy rysunek}
+		\label{rys}
+	\end{figure}
+
+\section{Kod źródłowy w dokumentach}
+
+	\begin{lstlisting}[language=C++]
+		for(int i =0;1<10;i++)
+		{ 
+			cout<< "i = " << i << endl;
+		}
+	\end{lstlisting}
+
+	\bibliographystyle{plain}		
+	\bibliography{bibliografia}
+
+\end{document}
