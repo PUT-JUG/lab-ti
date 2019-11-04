@@ -79,7 +79,7 @@ ans =
 
 1. W konsoli Matlab sprawdź działanie powyższych operatorów.
 
-2. Rakieta przyspiesza jednostajnie z przyspieszeniem 100 m/s^2. Oblicz jaką drogę przebędzie w przeciągu 10 s.
+2. Rakieta przyspiesza jednostajnie z przyspieszeniem 100 m/s^2. Oblicz jaką drogę przebędzie w przeciągu 10 s. **PODPOWIEDŹ** ![przyspieszenie](./_images/04/przyspieszenie.svg)
 
 ---
 
@@ -302,6 +302,15 @@ ans =
      6    14    24    36    50
 ```
 
+Długość wektora możemy uzyskać korzystając z funkcji `length()`:
+
+```matlab
+>> length(a)
+
+ans =
+     5
+```
+
 #### Macierze
 
 W Matlab macierze definiujemy w sposób identyczny jak wektory, wiersze oddzielamy za pomocą średnika (`;`):
@@ -315,7 +324,7 @@ y =
      7     8     9
 ```
 
-Do poszczególnych elementów odwołujemy się przekazując w nawiasach `()` dwie wartości oddzielone przecinkami:
+Do poszczególnych elementów odwołujemy się przekazując w nawiasach `()` dwie wartości oddzielone przecinkami. Podajemy najpierw wiersz, potem kolumnę. Indeksowane od 1:
 
 ```matlab
 >> y(1,3)
@@ -366,6 +375,21 @@ ans =
     10    11    12
 ```
 
+Rozmiar macierzy możemy uzyskać korzystając z funkcji `size()`. Zwraca ona dwuelementowy wektor określający liczbę wierzy i liczbę kolumn w macierzy:
+
+```matlab
+>> c = [1 2 3; 4 5 6]
+
+c =
+     1     2     3
+     4     5     6
+
+>> size(c)
+
+ans =
+     2     3
+```
+
 ---
 
 #### :hammer: :fire: Zadanie :fire: :hammer:
@@ -387,10 +411,6 @@ ans =
      0     0     0
      0     0     0
      0     0     0
-
-
-ans =
-     1     1     1     1     1
 
 >> ones(2,5) % macierz jedynek
 
@@ -520,14 +540,110 @@ Wywołaj skrypt *my_first_script* z poziomu konsoli.
 
 ## Wykresy
 
-## Zadanie końcowe :fire: :hammer:
-
-Bla
-
-## Zadanie domowe :boom: :house:
-
-Bla
+Do wyświetlania wykresów w Matlabie służy funkcja `plot(x,y)`. Pierwszym argumentem jest wektor zawierający współrzędne odciętych (`x`), a drugim wektor zawierający współrzędne rzędnych (`y`). Kolejne punkty łączone są liniami prostymi.
 
 ---
 
-Autorzy: *Tomasz Mańkowski* *Rafał Kabaciński*
+#### :hammer: :fire: Zadanie :fire: :hammer:
+
+1. Skopiuj poniższy kod do własnego skryptu i uruchom:
+
+```matlab
+x = [1 2 3 4];
+y = [1 2 3 4];
+
+plot(x,y,'-o')
+
+grid on
+```
+
+2. Zmień wartość wektora `y` na `[1 2 1 2]`. Uruchom skrypt i zobacz wynik.
+3. Zmień wartość wektora `x` na `[1 2 2 1]`. Uruchom. Funkcja plot nie sprawdza czy dany wykres jest funkcją więc możliwe jest rysowanie dowolnych krzywych.
+
+---
+
+Trzecim argumentem funkcji plot jest ciąg formatujący. Może on zawierać specyfikację koloru i typu linii oraz typu markera w punktach danych. Pomoc do wszystkich funkcji Matlab można uzyskać wpisując `doc nazwa_funkcji`, na przykład:
+
+```matlab
+doc plot
+```
+
+---
+
+#### :hammer: :fire: Zadanie :fire: :hammer:
+
+1. Korzystając z konsoli otwórz dokumentację funkcji `plot`.
+2. Przejdź do sekcji **Input Arguments** -> **Line Spec**.
+3. Zmodyfikuj skrypt tak aby wykres wyświetlany był przerywaną linią w kolorze czerwonym, a każdy punkt wykresu był oznaczany krzyżykiem.
+
+---
+
+Kolejne wywołania funkcji plot domyślnie nadpisują zawartość umieszczoną w poprzednim oknie rysunków. Można zmienić to za pomocą polecenia:
+
+```matlab
+hold on
+```
+
+Po jego użyciu w danym oknie rysunkowym kolejne wywołania funkcji plot będą dodawać wykresy w tych samych osiach. Tryb ten można zakończyć za pomocą polecenia:
+
+```matlab
+hold off
+```
+
+Nowe okno rysunkowe otworzyć można za pomocą polecenia:
+
+```matlab
+figure
+```
+
+**UWAGA** Polecenia plot, oraz pokrewne, rysują w ostatnim aktywnym oknie. Jeżeli użytkownik nie zamknie okna z poprzedniego uruchomienia skryptu wykres będzie dodany do poprzedniego okna i zostanie ono przesunięte na wierzch.
+
+Pozostałe polecenia przydatne przy generowaniu wykresów:
+
+- `grid on` - siatka pomocnicza,
+- `axis tight` - usunięcie pustych przestrzeni wokół wykresu,
+- `axis equal` - równe skale na osiach,
+- `title('string')` - tytuł wykresu,
+- `xlabel('x')` - etykieta osi x,
+- `ylabel('y')` - etykieta osi y,
+- `legend('variable1', 'variable2', ...)` - legenda wykresu,
+- `xlim([xmin xmax])` - ustawianie zakresu osi x,
+- `ylim([ymin ymax])` - ustawianie zakresu osi y.
+
+## Zadanie końcowe :fire: :hammer:
+
+1. Utwórz wektor `t = [0:0.01:1]`. Przygotuj w skrypcie wykresy funkcji sinus o częstotliwościach **2 Hz** i **10 Hz**. Kolor linii ustaw na odpowiednio zielony i czerwony, dodaj tytuł wykresu, opisy osi, legendę , siatką pomocniczą i ustaw zakresy osi y między **-1.2** a **1.2**.
+
+![sinus](./_images/04/sinus.svg)
+
+2. Wyznacz wektor będący sumą obliczonych w poprzednim zadaniu składowych sinusoidalnych. Wykreśl przebieg na tym samym wykresie, w kolorze niebieskim. Zmień zakres osi y na **-2.5** do **2.5**.
+
+3. Oblicz wartość średnio-kwadratową (RMS) z wynikowego sygnału z poprzedniego zadania. **PODPOWIEDŹ** Do obliczenia średniej wykorzystaj funkcję `mean()`, zwróć uwagę, że elementy wektora muszą zostać podniesione do kwadratu.
+
+![rms](./_images/04/rms.svg)
+
+## Zadanie domowe :boom: :house:
+
+#### Zadanie 1
+
+Dany jest wektor `x` o wartościach `[-10:0.01:10]`. Oblicz wartości funkcji danych następującymi wielomianami:
+
+![poly_1](./_images/04/poly_1.svg)
+
+![poly_2](./_images/04/poly_2.svg)
+
+Wyświetl oba wielomiany na wykresie. Znajdź średnią, minimalną i maksymalną wartość funkcji w tym zakresie (`mean()`, `min()`, `max()`).
+
+#### Zadanie 2
+
+Dowiedz się jak umieścić w jednym oknie więcej niż jeden wykres, skorzystaj z wbudowanej pomocy:
+
+```matlab
+doc subplot
+```
+
+Utwórz jedno okno na którym umieścisz dwa wykresy, jeden po drugim. Podobnie jak w zadaniu końcowym 1 i 2 na jednym wykresie umieść składowe sygnału o częstotliwościach **2 Hz** i **10 Hz**. Na wykresie pod spodem umieść sumę tych sygnałów.
+
+---
+
+Autorzy: *Tomasz Mańkowski*, *Rafał Kabaciński*
