@@ -351,7 +351,7 @@ Zwróć uwagę na sposób definiowania *ciała* wyrażenia `for`. Wszystkie kome
 ```python
 students = ['Marek', 'Alicja', 'Franciszek', 'Karolina']
 for s in students:
-    for character in students[1]:
+    for character in s:
         print(character)
         print("ASCII:", ord(character))
 

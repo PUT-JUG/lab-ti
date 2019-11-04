@@ -119,7 +119,15 @@ Nadajmy sens naszemu pierwszemu repozytorium!
 
 ![git_changes](./_images/12/git_changes.png)
 
-#TODO: CZY folder .idea?! Czy edytować plik .giignore ?!
+Jak widać powyżej, poza dodanym przez nas skryptem *colaborative_script.py* oprogramowanie *PyCharm* utworzyło także dodatkowe pliki konfiguracji środowiska, które zostały zapisane w folderze *.idea*. Pliki te są specyficzne dla danego komputera i dla danej konfiguracji *PyCharm* i nie powinny znaleźć się w repozytorium.
+
+Jedną z opcji ominięcia jest, aby przy każdym wysyłaniu zmian na serwer wykluczać poszczególne pliki odklikująć poszczególne ptaszki przy plikach. Takie rozwiązanie jest uciążliwe i może prowadzić do powstania błędów. Dużo lepszym rozwiązaniem jest dodanie stałego wykluczenia przez wyedytowanie pliku *.gitignore* (1). Tworząc repozytorium dodaliśmy domyślną konfigurację dla języka Python, teraz wystarczy do pliku dodać wpis ***.idea*** (2). Plik *.gitignore* możemy swobodnie edytować w środowisku *PyCharm*:
+
+![git_edit_gitignore](./_images/12/git_edit_gitignore.png)
+
+Po zapisaniu pliku *.gitignore* w *GitHub Desktop* powinny zostać wyświetlone jedynie zmiany dotyczące dodania pliku *colaborative_script.py* oraz edycji samego pliku *.gitignore*:
+
+![git_after_gitignore_edit](./_images/12/git_after_gitignore_edit.png)
 
 Aby wysłać zmiany do serwisu *GitHub* należy wprowadzić opis zmian w polu **Summary** (1), a następnie kliknąć **Commit to master** (2):
 
@@ -299,10 +307,19 @@ print(p2, p3, p4)
 
 ## Zadanie końcowe :fire: :hammer:
 
-1. TODO
+1. Utwórz na swoim koncie *GitHub* nowe publiczne repozytorium o nazwie: *euler-calculations*, zainicjalizuj dodaj *.gitignore* konfiguracją dla Python, otwórz projekt w *PyCharm* i wedytuj *.gitignore* dodając wykluczenie dla folderu *.idea*. Dodaj plik *euler.py*.
 
+2. Napisz funkcję `factorial(value)`, która zwracać będzie silnię (x!) z wartości `value`. Nie korzystaj z *numpy*. Dodaj przykładowe wywołanie funkcji i wyświetl wynik dla wartości 0, 5 i 8.
 
-**Pamiętaj aby po skończonych laboratoriach wylogować się z programu GitHub Desktop!** W tym celu wybierz *File* &rarr; *Options…* , a następnie w zakładce *Accounts* kliknij *Sign Out*. Warto także usunąć lokalne repozytoria z dysku komputera i z programu GitHub Desktop. W tym celu wybierz odpowiednie repozytorium i z menu *Repository* wybierz *Remove*.
+3. Wykonaj *commit* zmian i wyślij na serwis *GitHub*.
+
+4. Dodaj funkcję zwracającą wartość liczby Eulera za pomocą sumy szeregu: `euler_from_series(precision)`. Gdzie `precision` określa dokładność przybliżenia wartości liczby Eulera. Do obliczania silni z liczby wykorzystaj stworzoną wcześniej funkcję `factorial`. Dodaj przykład użycia funkcji.
+
+![euler](./_images/12/euler.png)
+
+5. Wykonaj *commit* zmian i wyślij na serwis *GitHub*.
+
+6. **Pamiętaj aby po skończonych laboratoriach wylogować się z programu GitHub Desktop!** W tym celu wybierz *File* &rarr; *Options…* , a następnie w zakładce *Accounts* kliknij *Sign Out*. Warto także usunąć lokalne repozytoria z dysku komputera i z programu GitHub Desktop. W tym celu wybierz odpowiednie repozytorium i z menu *Repository* wybierz *Remove*.
 
 ## Zadanie domowe :boom: :house:
 
