@@ -16,10 +16,13 @@ Bardzo często zachodzi jednak konieczność wyświetlenia wyniku nie w domyśln
 
 ```matlab
 a = [1 5 3; 63 22.6 2; 12.9 5 3];
+
 disp('Matrix:');
 disp(a);
+
 disp('Single element:');
 disp(a(3, 2));
+
 disp('First row:');
 disp(a(1, :));
 ```
@@ -51,8 +54,10 @@ Na przykład:
 
 ```matlab
 numbers = [3 32.5 42 22 11 434 10 30 4.22];
+
 max_val = max(numbers);
 min_val = min(numbers);
+
 fprintf('Vector statistics:\n');
 fprintf('\tMinimum value: %d\n\tMaximum value: %d\n', min_val, max_val);
 ```
@@ -101,12 +106,15 @@ Istotnym elementem Matlab jest możliwość stosowania operatorów porównawczyc
 
 ```matlab
 x = [0.3188 0.4242 0.5079 0.0855 0.2625 0.8010 0.0292];
+
 y = x < 0.5;
+
 disp('Values smaller than 0.5 at:');
 disp(y);
 
 a = [1 2 3; 4 5 6; 7 8 9];
 b = [2 3 3; 4 3 8; 1 8 3];
+
 disp('Matrices are not equal at:');
 disp(a ~= b);
 ```
@@ -123,6 +131,7 @@ Następnie istnieje możliwość wybrania elementów spełniających (lub niespe
 
 ```matlab
 x = [0.3188 0.4242 0.5079 0.0855 0.2625 0.8010 0.0292];
+
 disp('Values smaller than 0.5:');
 disp(x(x < 0.5));
 ```
@@ -136,7 +145,9 @@ Na wektorach logicznych możemy wykorzystywać operacje logiczne (`&` (i), `|` (
 
 ```matlab
 x = [0.3188 0.4242 0.5079 0.0855 0.2625 0.8010 0.0292];
+
 x_logic = (x > 0.25) & (x < 0.75);
+
 disp('Numbers higher than 0.25 and lower than 0.75:');
 disp(x(x_logic));
 ```
@@ -150,7 +161,9 @@ Często zachodzi konieczność znalezienia indeksu wartości spełniających dan
 
 ```matlab
 x = [0.3188 0.4242 0.5079 0.0855 0.2625 0.8010 0.0292];
+
 x_indexes = find(x < 0.4);
+
 disp('Indexes of values lower than 0.4:');
 disp(x_indexes);
 ```
@@ -212,9 +225,9 @@ data = csvread('sample.csv');
 disp(data)
 ```
 
-> &emsp;0.4800&emsp;&nbsp;&nbsp;400.&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2000&emsp;&nbsp;&nbsp;&nbsp;2.9037  
-> &emsp;1.0000&emsp;&nbsp;&nbsp;2.0000&emsp;&nbsp;&nbsp;3.0000&emsp;&nbsp;&nbsp;&nbsp;4.0000  
-> &emsp;73.2000&emsp;75.2000&emsp;723.0000&emsp;222.3000()
+> &emsp;0.4800&emsp;&nbsp;&nbsp;400.&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2000&emsp;&nbsp;&nbsp;&nbsp;&nbsp;2.9037  
+> &emsp;1.0000&emsp;&nbsp;&nbsp;2.0000&emsp;&nbsp;&nbsp;3.0000&emsp;&nbsp;&nbsp;&nbsp;&nbsp;4.0000  
+> &emsp;73.2000&emsp;75.2000&emsp;723.0000&emsp;222.3000
 
 ---
 
@@ -233,6 +246,7 @@ Do obliczenia pochodnej numerycznej (różnic pomiędzy kolejnymi elementami), m
 
 ```matlab
 x = [1 3 10 -29 3];
+
 disp(diff(x));
 ```
 
