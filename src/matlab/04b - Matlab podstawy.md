@@ -646,4 +646,4 @@ Utwórz jedno okno na którym umieścisz dwa wykresy, jeden po drugim. Podobnie 
 
 ---
 
-Autorzy: *Tomasz Mańkowski*, *Rafał Kabaciński*
+Autorzy: *Rafał Kabaciński*, *Tomasz Mańkowski*

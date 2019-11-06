@@ -423,6 +423,8 @@ else:
 
 Jak widać w powyższym przykładzie przypisanie instrukcji do wykonania po spełnieniu warunku wykonywane jest przez zastosowanie *wcięć*. Podstawowa forma instrukcji warunkowej może zawierać tylko `if`, `elif` i `else` nie są konieczne. Jeżeli warunek `if` nie zostanie spełniony sprawdzane są kolejne warunki zawarte w `elif`, na końcu jeżeli żaden warunek nie został spełniony program może wykonać instrukcje zawarte w sekcji `else`.
 
+W treści warunku możemy wykorzystywać podstawowe operatory porównawcze: `<`, `<=`, `>`, `>=`, `==` (równe), `!=` (różne). Oraz budować bardziej zaawansowane wyrażenia za pomocą operatorów logicznych: `&&` (i), `||` (lub), `!` (nie - negacja).
+
 ---
 
 #### :hammer: :fire: Zadanie :fire: :hammer:
