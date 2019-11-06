@@ -96,7 +96,7 @@ Powyższe polecenie różni się od wywołań `import` używanych na poprzednich
 
 ### Tworzenie macierzy
 
-Macierze numpy najprościej utworzyć na podstawie *listy* funkcją `np.array()`. Dostęp do elementów jest podobny jak w przypadku Pythonowej listy. Pamiętaj, że w przeciwieństwie do MATLABa, indeksowanie elementów zaczyna się od 0:
+Macierze numpy najprościej utworzyć na podstawie *listy* funkcją `np.array()`. Dla 1-wymiarowej macierzy (wektora) dostęp do indywidualnych elementów jest podobny jak w przypadku Pythonowej listy. Pamiętaj, że w przeciwieństwie do MATLABa, indeksowanie elementów zaczyna się od 0:
 
 ```python
 a = np.array([-1, 3.14, 0]) # tworzy 1-wymiarowa macierz (wektor)
@@ -109,7 +109,7 @@ print(a)
 Analogicznie możliwe jest stworzenie dwuwymiarowej macierzy na podstawie listy list-wierszy:
 
 ```python
-b = np.array([[10,20,30],[41,51,61]]) # tworzy macierz 2 x 3
+b = np.array([[10, 20, 30], [41, 51, 61]]) # tworzy macierz 2 x 3
 print("Wymiary:", b.shape)
 print("Liczba wierszy:", b.shape[0])
 print("Liczba kolumn:", b.shape[1])
@@ -167,7 +167,7 @@ print(y)
 
 ### Podstawowe operacje arytmetyczne i logiczne
 
-Podstawowe operacje matematyczne (dodawanie, odejmowanie, mnożenie, dzielenie, potęgowanie) wykonywane są z użyciem standardowych operatorów **na każdym elemencie** wektora/macierzy, wynik zwracany jest jako nowa macierz. Jednym z operatorów może być skalar. W bibliotece NumPy dostępne są również podstawowe funkcje matematyczne, np. `np.sin`, `np.sqrt` itd., które również działają poprawnie dla macierzy. Pełna lista funkcji wraz z opisem dostępna jest w dokumentacji: https://docs.scipy.org/doc/numpy/reference/routines.math.html
+Podstawowe operacje matematyczne (dodawanie, odejmowanie, mnożenie, dzielenie, potęgowanie) wykonywane są z użyciem standardowych operatorów **na każdym elemencie** macierzy, wynik zwracany jest jako nowa macierz. Wejściowie macierze muszą mieć zgodne wymiary, jednym z operandów może być skalar. W bibliotece NumPy dostępne są również podstawowe funkcje matematyczne, np. `np.sin`, `np.sqrt` itd., które również działają poprawnie dla macierzy. Pełna lista funkcji wraz z opisem dostępna jest w dokumentacji: https://docs.scipy.org/doc/numpy/reference/routines.math.html
 
 ```python
 a = np.array([20, 30, 40, 50])
@@ -186,7 +186,7 @@ print(10*np.sin(a))
 W odróżnieniu od np. MATLABa, operator `*` na macierzach również wykonuje operację per-element. Do mnożenia macierzy służy operator `@`:
 
 ```python
-A = np.array([[1, 1],
+A = np.array([[1, 0],
               [0, 1]])
 B = np.array([[2, 0],
               [3, 4]])
@@ -198,15 +198,123 @@ print()
 print("mnożenie macierzy:")
 print(A @ B)
 ```
-> mnożenie po elementach:
-> [[2 0]
-> [0 4]]
-> 
-> mnożenie macierzy:
-> [[5 4]
-> [3 4]]
- 
- 
+
+Na wektorach i macierzach można wykonywać również operacje logiczne (porównania), wykorzystując operatory takie jak `<`, `>`, `<=`, `>=`, `==`, `!=`. Wynikiem jest macierz logiczna o tym samym rozmiarze:
+
+
+```python
+print("porównanie macierzy ze skalarem:")
+print(B <= 3)
+print()
+
+print("porównanie macierzy z macierzą:")
+print(A == B)
+print()
+```
+
+#### :hammer: :fire: Zadanie :fire: :hammer:
+
+* Stwórz macierz losową o 4 wierszach i 3 kolumnach zawierającą elementy z przedziału <0..100> (**podpowiedź**: funkcja `np.random.random` generuje macierz z elementami z zakresu <0..1>)
+
+* Wygeneruj wektor zawierający kolejne potęgi liczby 2 (z wykładnikiem od 0 do 10, zwiększanym co 1)
+
+### Indeksowanie macierzy
+
+Fragmenty jednowymiarowych macierzy (wektorów) można wybierać identycznie jak fragmenty Pythonowych list, za pomocą zakresów podawanych w nawiasach kwadratowych:
+
+```python
+a = np.arange(10)**3
+print(a)
+print(a[2])
+print(a[2:5])
+```
+
+Dla dwu- i wielowymiarowych macierzy należy podać w nawiasach jeden zakres dla każdego wymiaru. Możliwe jest podanie wartości `:` oznaczającej pełny zakres w danym wymiarze. Pamiętaj, że zakresy opisują przedział indeksów prawostronnie otwarty:
+
+```python
+B = np.array([[1], [2], [3], [4]]) @ np.array([[10, 20, 30, 40]])
+print("macierz wejściowa:")
+print(B)
+print("wiersze 0, 1, 2 z kolumny 1:")
+print(B[0:3, 1])
+print("cały drugi wiersz:")
+print(B[2, :])
+print("fragment macierzy:")
+print(B[0:3, 0:3])
+```
+
+Do indeksowania można również użyć macierzy logicznej, będącej np. wynikiem porównania:
+
+```python
+a = np.random.random(10)
+print("a =", a)
+b = a[a > 0.7] # wybierz z wektora a elementy większe niż 0.7
+print("b =", b)
+```
+
+
+**Uwaga!** wycięty fragment macierzy w większości przypadków nie jest nową macierzą w pamięci, tylko *widokiem* na oryginalną macierz. Aby wymusić utworzenie nowej macierzy uniknąć możesz użyć metody `.copy()`:
+
+```python
+C = B[1:3, 1:3]
+C[0, 0] = -3.14
+print(B) # oryginalna macierz została zmodyfikowana
+
+D = np.ones((4, 5))
+E = D[1:3, 1:3].copy()
+E[0, 0] = -3.14
+print(D) # oryginalna macierz nie została zmodyfikowana
+```
+
+## Wykresy - Matplotlib
+
+Matplotlib to popularna biblioteka służąca do generowania wykresów w Pythonie. Jest ściśle powiązana z NumPy, a jej interfejs programistyczny jest zbliżony do tego używanego w MATLABie. Wróć do pierwszej komórki, dodaj do niej komendę importującą bibliotekę i uruchom ją:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+Wróć do końca notatnika i wklej w nowej komórce poniższe polecenia:
+
+```python
+x = np.linspace(0, 10, 1000)
+y = x**2
+
+plt.figure()
+plt.plot(x, y)
+plt.ylabel('y = x^2')
+plt.show()
+```
+
+Matplotlib ma wiele interfejsów rysowania wykresu - domyślnie w Jupyterze wykresy będą generowane pod bieżącą komórką, przy uruchomienium mp. z linii poleceń lub z PyCharma pojawią się w nowym oknie.
+
+
+## Zadanie końcowe :fire: :hammer:
+
+
+
+
+## Zadanie domowe :home:
+
+Przetestuj działanie poznanych dzisiaj funkcji w środowisku PyCharm:
+
+1. Utwórz skrypt, zaimportuj w nim niezbędne biblioteki
+
+
+
+
+
+
+2. Napisz skrypt wyświetlający zmiany w kursach walut na przestrzeni lat:
+
+* Korzysytając z biblioteki `requests` i API na stronie *exchangeratesapi.io* pobierz kursy walut z 1 stycznia każdego roku, począwszy od 2000 do 2019.
+
+Adres zapytania zwracający kurs z danego dnia w formacie JSON: `https://api.exchangeratesapi.io/YYYY-MM-DD?base=PLN`.
+
+* Odczytaj z pobranego JSON-a kursy PLN w stosunku do USD, EUR i GBP z każdego roku i umieść jako elementy w macierzy `np.array`, gdzie wiersze odpowiadają walutom, a kolumny kolejnym datom.
+
+* Wykreśl wszystkie kursy na wspólnym wykresie w różnych kolorach, dodaj opisy osi i legendę. Pamiętaj o wyświetleniu lat na osi x.
+
  
 ---
 
