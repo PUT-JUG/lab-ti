@@ -293,13 +293,26 @@ fprintf('\n')
 
 ## Zadanie końcowe :fire: :hammer:
 
-Bla Bla
+1. Dany jest plik CSV [data.csv](./_resources/05/data.csv). Wczytaj dane. W pierwszej kolumnie znajduje się wektor czasu, zapisz go do zmiennej `t`. W kolumnach 2 do 5 znajdują się 4 sygnały sinusoidalne, zapisz je jako macierz do zmiennej `signals`. Wyświetl na jednym wykresie poszczególne składowe sygnału.
+2. Korzystając z pętli `for` wykonaj sumowanie wszystkich 4 składowych sinusoidalnych i zapisz do zmiennej `sin_sum`. Wyświetl na wykresie. **PODPOWIEDŹ** Aby wykonać poprawnie pierwsze sumowanie w pętli możesz zainicjalizować zmienną za pomocą zer. Długość dla nowego wektora możesz sprawdzić korzystając z `length()`.
+3. Wykonaj obcięcie sygnału `sin_sum`, tak aby wszystkie wartości powyżej 10 zastąpić za pomocą 10, a wszystkie wartości poniżej -10 zastąpić za pomocą -10.
+4. Wyświetl na nowym wykresie sygnał `sin_sum` (czerwony, linia kropkowana) oraz `sin_sum` (czarny, linia przerywana) po wykonaniu obcięcia. Dodaj opisy osi, tytuł wykresu oraz legendę.
 
 ## Zadanie domowe :boom: :house:
 
 #### Zadanie 1
 
-Bla
+Dany jest monochromatyczny obrazek w formacie *.bmp*: [lenna.bmp](./_resources/05/lenna.bmp). Wczytaj obrazek do Matlab/GNU Octave i wyświetl. **PODPOWIEDŹ** Skorzystaj z funkcji `imread()` oraz `imshow()`.
+
+#### Zadanie 2
+
+Wyświetl negatyw obrazka wczytanego w zadaniu 1. Następnie wykadruj uzyskany obraz, tak aby w nowym obrazie znalazła się środkowa część obrazka, a długość boków była połową pierwotnego rozmiaru obrazu. Nowy obraz zapisz do nowej zmiennej i wyświetl.
+
+#### Zadanie 3
+
+Wykonaj sklejanie obrazu otrzymanego w zadaniu 2, tak aby w nowej macierzy obraz pojawił się wielokrotnie, 3 wiersze i 5 kolumn. Obraz można zapisać używają funkcji `imwrite()`.
+
+![lenna_multiple](./_images/05/lenna_multiple.bmp)
 
 ---
 
