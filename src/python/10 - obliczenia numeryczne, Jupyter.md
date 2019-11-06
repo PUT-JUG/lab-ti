@@ -45,7 +45,7 @@ Możesz zapisać swój notatnik pod stosowną nazwą wybierając `File` → `Sav
 
 Pole tekstowe, do którego został wklejony kod to *komórka* (ang. *cell*). Notatnik może być zbudowany z wielu takich komórek, z których każda może zostać uruchomiona oddzielnie. Komórki mogą zawierać kod źródłowy przeznaczony do uruchomienia (*code cell*) lub tekst sformatowany wraz z grafikami, tabelami itp. (*Markdown cell*). W ramach zajęć będziemy korzystać głównie z komórek z kodem źródłowym. Komórka taka może zawierać wiele linii kodu i koncepcyjnie powinna odpowiadać za jedną czynność - np. wczytanie danych, poszczególne etapy ich przetwarzania czy prezentację wyników. Wszystkie komórki współdzielą jeden **interpreter** Pythona - oznacza to, że dane zapisane do zmiennych w jednej komórce można ponownie wykorzystać w kolejnych.
 
-Dodaj kolejną komórkę przyciskiem **+** w pasku narzędziowym lub naciskając `Alt` + `Enter`. Umieść w niej poniższy kod źródłowy i uruchom:
+Dodaj kolejną komórkę przyciskiem **+** w pasku narzędziowym lub naciskając `Alt` + `Enter`. Umieść w niej poniższy kod źródłowy i uruchom (`Ctrl` + `Enter`):
 
 ```python
 print(name, "has", len(name), "letters")
@@ -61,7 +61,7 @@ Wykonaj komórkę trzecią, a następnie podświetl komórkę drugą (możesz do
 
 **Uwaga!** Oczywiście kod powinien być pisany w notatniku z założeniem, że komórki wykonywane są kolejno, od góry do dołu - analogicznie do zwykłego pliku źródłowego. Jednak pracując nad nowym programem czy algorytmem często spotkasz się z sytuacją, gdzie poprawek i ponownego uruchomienia wymaga tylko jedna komórka, a uruchomienie całego kodu byłoby np. kosztowne czasowo. Jupyter daje możliwość poprawienia i uruchomienia pojedynczych komórek, jednak należy mieć na uwadze czy w zmiennych w interpreterze znajduje się to, czego oczekujemy.
 
-Wszystkie operacje edycji struktury notatnika można wykonywać z menu graficznego, jednak przy częstym używaniu warto zapoznać się ze skrótami klawiszowymi dla przyspieszenia obsługi. Podczas obsługi interfejs ma dwa tryby - *command mode* (niebieski pasek po lewej) oraz *edit mode* (zielony pasek po lewej), aktywowane odpowiednio klawiszami `Escape` oraz `Enter`.
+Wszystkie operacje edycji struktury notatnika można wykonywać z menu graficznego, jednak przy częstym używaniu warto zapoznać się ze skrótami klawiszowymi dla przyspieszenia obsługi. Podczas obsługi interfejs ma dwa tryby - *command mode* (niebieski pasek po lewej od aktywnej komórki) oraz *edit mode* (zielony pasek), aktywowane odpowiednio klawiszami `Escape` oraz `Enter`.
 
 Najprzydatniejsze skróty to:
 
@@ -90,13 +90,13 @@ Utwórz nowy notatnik, zapisz go pod stosowną nazwą, np. `hello_numpy`. W pier
 import numpy as np
 ```
 
-Powyższe polecenie różni się od wywołań `import` używanych na poprzednich zajęciach - biblioteka została zaimportowana pod nazwą `np`. Oznacza to, że do jej funkcji będziemy się odwoływać przez `np.nazwa_funkcji`, a nie `numpy.nazwa_funkcji`, dla skrócenia kodu. Podana konwencja (`np` jako alias dla `numpy`) jest ogólnie przyjętym standardem. Nie należy tworzyć własnych skrótów, 
+Powyższe polecenie różni się od wywołań `import` używanych na poprzednich zajęciach - biblioteka została zaimportowana pod nazwą `np` dla skrócenia kodu. Oznacza to, że do jej funkcji będziemy się odwoływać przez `np.nazwa_funkcji`, a nie `numpy.nazwa_funkcji`. Podana konwencja (`np` jako alias dla `numpy`) jest ogólnie przyjętym standardem. Nie należy tworzyć własnych skrótów, ponieważ prowadzi to do powstawania nieczytelnego kodu.
 
 **Hint:** pierwsza komórka często służy tylko wczytaniu wymaganych bibliotek. Kolejne bloki kodu z zadań do wykonania w instrukcji, a także zadania do samodzielnego wykonania umieszczaj w oddzielnych komórkach.
 
 ### Tworzenie macierzy
 
-Macierze numpy najprościej utworzyć na podstawie *listy* funkcją `np.array()`. Dostęp do elementów jest podobny jak w przypadku listy. Pamiętaj, że w przeciwieństwie do MATLABa, indeksowanie elementów zaczyna się od 0:
+Macierze numpy najprościej utworzyć na podstawie *listy* funkcją `np.array()`. Dostęp do elementów jest podobny jak w przypadku Pythonowej listy. Pamiętaj, że w przeciwieństwie do MATLABa, indeksowanie elementów zaczyna się od 0:
 
 ```python
 a = np.array([-1, 3.14, 0]) # tworzy 1-wymiarowa macierz (wektor)
@@ -106,7 +106,7 @@ a[0] = 5
 print(a)
 ```
 
-Analogicznie możliwe jest stworzenie dwuwymiarowej macierzy na podstawie listy list:
+Analogicznie możliwe jest stworzenie dwuwymiarowej macierzy na podstawie listy list-wierszy:
 
 ```python
 b = np.array([[10,20,30],[41,51,61]]) # tworzy macierz 2 x 3
@@ -116,7 +116,7 @@ print("Liczba kolumn:", b.shape[1])
 print("Różne elementy:", b[0, 0], b[0, 1], b[1, 0])
 ```
 
-Często używane typy macierzy (jednotkową, wypełnione zerami czy stałą liczbą) można uzyskać poniższymi funkcjami: 
+Często używane typy macierzy (np. jednostkową, wypełnione zerami czy stałą liczbą) można uzyskać poniższymi funkcjami: 
 
 ```python
 c = np.zeros((2,2))         # macierz zer
@@ -142,10 +142,22 @@ print()
 g = np.random.random((2,3)) # macierz z losowymi elementami z przedziału <0...1>
 print("random:")
 print(g)
-print()
 ```
 
 Metoda `shape` macierzy zwraca *krotkę*, którą na bieżące potrzeby możesz traktować tak samo jak listę, odwołując się do jej elementów nawiasami kwadratowymi. Funkcje `zeros`, `ones` itp. przyjmują jako pierwszy argument również krotkę - jej utworzenie różni się od listy tylko typem nawiasów (okrągłe zamiast kwadratowych).
+
+Często wymagane jest stworzenie wektora o równomiernym rozkładzie. Służą do tego funkcje `np.arange(start, stop, step)` oraz  `np.linspace(start, stop, num)`:
+
+```python
+x = np.arange(10, 30, 5)           # wektor od 10 do 30 (przedział prawostronnie otwarty), z krokiem 5
+print("arange:")
+print(x)
+print()
+
+y = np.linspace(0, 2*np.pi, 10)    # wektor od 0 do 2*pi (przedział obustronnie domknięty), o 10 elementach
+print("linspace:")
+print(y)
+```
 
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
@@ -153,9 +165,49 @@ Metoda `shape` macierzy zwraca *krotkę*, którą na bieżące potrzeby możesz 
 * Utwórz losową macierz o wymiarach `n` x `n`, wyświetl ją.
 * Korzystając z pętli `for` wyświetl elementy leżące na przekątnej wylosowanej macierzy.
 
+### Podstawowe operacje arytmetyczne i logiczne
 
+Podstawowe operacje matematyczne (dodawanie, odejmowanie, mnożenie, dzielenie, potęgowanie) wykonywane są z użyciem standardowych operatorów **na każdym elemencie** wektora/macierzy, wynik zwracany jest jako nowa macierz. Jednym z operatorów może być skalar. W bibliotece NumPy dostępne są również podstawowe funkcje matematyczne, np. `np.sin`, `np.sqrt` itd., które również działają poprawnie dla macierzy. Pełna lista funkcji wraz z opisem dostępna jest w dokumentacji: https://docs.scipy.org/doc/numpy/reference/routines.math.html
 
+```python
+a = np.array([20, 30, 40, 50])
+b = np.arange(0, 4)
+c = a - b
+print("odejmowanie:")
+print(a - b)
 
+print("potęgowanie przez skalar:")
+print(b**2)
+
+print("wartość funkcji 10*sin(a):")
+print(10*np.sin(a))
+```
+
+W odróżnieniu od np. MATLABa, operator `*` na macierzach również wykonuje operację per-element. Do mnożenia macierzy służy operator `@`:
+
+```python
+A = np.array([[1, 1],
+              [0, 1]])
+B = np.array([[2, 0],
+              [3, 4]])
+              
+print("mnożenie po elementach:")
+print(A * B)
+print()
+
+print("mnożenie macierzy:")
+print(A @ B)
+```
+> mnożenie po elementach:
+> [[2 0]
+> [0 4]]
+> 
+> mnożenie macierzy:
+> [[5 4]
+> [3 4]]
+ 
+ 
+ 
 ---
 
 Autor: *Jakub Tomczyński*
