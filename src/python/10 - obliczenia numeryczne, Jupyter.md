@@ -1,4 +1,4 @@
-# 10 - obliczenia numeryczne, Jupyter
+# 10 - Obliczenia numeryczne, Jupyter
 
 ## Jupyter Notebook
 
@@ -18,7 +18,7 @@ jupyter-3.7 notebook
 
 Uruchomienie powyższego polecenia spowoduje uruchomienie *serwera* Jupyter w terminalu i jednocześnie otwarcie domyślnej przeglądarki internetowej z interfejsem środowiska. Nie zamykaj okna terminala, pozostaw je uruchomione w tle. Zwróć uwagę na adres w przeglądarce - adresem serwera jest `localhost` czyli komputer lokalny. Możliwa jest również praca zdalna - serwer może być uruchomiony na maszynie o dużej mocy obliczeniowej, podczas gdy pracujemy w innym miejscu np. na komputerze przenośnym czy nawet urządzeniu mobilnym. Cały program będzie wykonywany na serwerze w tzw. *kernelu*, a nasz komputer wyświetli jedynie jego wyniki.
 
-**Pamiętaj, że Jupyter Notebook to tylko środowisko** - składnia i zasady języka Python pozostają niezmienione, zatem cała Twoja wiedza z poprzednich będzie mieć tu zastosowanie.
+**Pamiętaj, że Jupyter Notebook to tylko środowisko** - składnia i zasady języka Python pozostają niezmienione, zatem cała Twoja wiedza z poprzednich zajęć będzie mieć tu zastosowanie.
 
 ### Interfejs
 
@@ -159,11 +159,15 @@ print("linspace:")
 print(y)
 ```
 
+---
+
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
 * Stwórz zmienną `n`, przypisz jej wartość całkowitą, np. 4.
 * Utwórz losową macierz o wymiarach `n` x `n`, wyświetl ją.
 * Korzystając z pętli `for` wyświetl elementy leżące na przekątnej wylosowanej macierzy.
+
+---
 
 ### Podstawowe operacje arytmetyczne i logiczne
 
@@ -212,24 +216,31 @@ print(A == B)
 print()
 ```
 
-#### :hammer: :fire: Zadanie :fire: :hammer:
+---
 
-* Stwórz macierz losową o 4 wierszach i 3 kolumnach zawierającą elementy z przedziału <0..100> (**podpowiedź**: funkcja `np.random.random` generuje macierz z elementami z zakresu <0..1>)
+#### :hammer: :fire: Zadania :fire: :hammer:
 
-* Wygeneruj wektor zawierający kolejne potęgi liczby 2 (z wykładnikiem od 0 do 10, zwiększanym co 1)
+1. Stwórz macierz losową o 4 wierszach i 3 kolumnach zawierającą elementy z przedziału <0..100> (**podpowiedź**: funkcja `np.random.random` generuje macierz z elementami z zakresu <0..1>)
+
+2. Utwórz wektor zawierający wartości kątów: 0°, 30°, 45° i 90°. Wyznacz jedną operacją wartości funkcji sinus dla podanych kątów. **Hint:** ![deg2rad](deg2rad.svg)
+
+3. Wygeneruj wektor zawierający kolejne potęgi liczby 2 (z wykładnikiem od 0 do 10, zwiększanym co 1)
+
+---
 
 ### Indeksowanie macierzy
 
-Fragmenty jednowymiarowych macierzy (wektorów) można wybierać identycznie jak fragmenty Pythonowych list, za pomocą zakresów podawanych w nawiasach kwadratowych:
+Fragmenty jednowymiarowych macierzy (wektorów) można wybierać identycznie jak fragmenty Pythonowych list, za pomocą zakresów podawanych w nawiasach kwadratowych, jako pojedynczy indeks bądź w formacie `od:do` lub `od:do:krok`.
 
 ```python
 a = np.arange(10)**3
 print(a)
 print(a[2])
 print(a[2:5])
+print(a[::2))
 ```
 
-Dla dwu- i wielowymiarowych macierzy należy podać w nawiasach jeden zakres dla każdego wymiaru. Możliwe jest podanie wartości `:` oznaczającej pełny zakres w danym wymiarze. Pamiętaj, że zakresy opisują przedział indeksów prawostronnie otwarty:
+Dla dwu- i wielowymiarowych macierzy należy podać w nawiasach jeden zakres dla każdego wymiaru. Możliwe jest podanie wartości `:` oznaczającej pełny zakres w danym wymiarze. Pamiętaj, że zakresy opisują przedział indeksów prawostronnie otwarty.
 
 ```python
 B = np.array([[1], [2], [3], [4]]) @ np.array([[10, 20, 30, 40]])
@@ -280,40 +291,109 @@ Wróć do końca notatnika i wklej w nowej komórce poniższe polecenia:
 x = np.linspace(0, 10, 1000)
 y = x**2
 
-plt.figure()
+plt.figure() # tworzy nowy wykres
 plt.plot(x, y)
-plt.ylabel('y = x^2')
-plt.show()
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend(["y=x^2"])
+plt.show() # powoduje wyświetlenie wykresu
 ```
+
+Powinieneś uzyskać następujący efekt:
+
+![Matplotlib](_images/10/matplotlib.png)
 
 Matplotlib ma wiele interfejsów rysowania wykresu - domyślnie w Jupyterze wykresy będą generowane pod bieżącą komórką, przy uruchomienium mp. z linii poleceń lub z PyCharma pojawią się w nowym oknie.
 
+Zwróć uwagę, że funkcja `legend` przyjmuje **listę** etykiet - nawet jeśli do opisania jest tylko jeden wykres.
+
+W odróżnieniu od MATLABa, kolejne wywołania funkcji `plot` nie będą nadpisywać istniejącej zawartości. Formatowanie wykresu jest bardzo zbliżone do składni w MATLABie - pełny opis znajdziesz w dokumentacji: https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.plot.html
+
+```python
+x = np.linspace(0, 10, 1000)
+
+plt.figure()
+plt.plot(x, 20*np.sin(x), 'r')
+plt.plot(x[::50], x[::50]**2, '^k')
+plt.plot(x, 5*np.cos(x), '--g')
+plt.legend(["y=sin(x)","y=x^3","y=sqrt(x)" ])
+plt.show()
+```
+
+Możliwe jest również podanie do funkcji `plot` macierzy jako wartości y, każda kolumna jest wtedy traktowana jako oddzielny przebieg:
+
+```python
+plt.figure()
+plt.plot(np.random.random((30, 2)))
+plt.show()
+```
+
+A także rysowanie wykresów złożonych z podwykresów:
+
+```python
+t = np.linspace(-np.pi, np.pi, 100)
+plt.figure()
+plt.subplot(1, 2, 1)
+plt.plot(t, np.sin(t))
+plt.subplot(1, 2, 2)
+plt.plot(t, np.cosh(t))
+plt.show()
+```
+
+---
 
 ## Zadanie końcowe :fire: :hammer:
 
+Krzywa gaussa opisana jest równaniem:
+
+![Równanie krzywej Gaussa](_images/10/gauss.svg)
+
+1. Wygeneruj na wspólnym wykresie serię krzywych Gaussa o parametrach
+
+![Parametry krzywych Gaussa](_images/10/gauss_params.svg)
+
+dla wartości *x* od -5 do 5, z krokiem 0.1.
+
+W/w parametry przechowaj w programie w wygodny sposób, np. jako listę słowników.
+
+2. Zmodyfikuj program tak, aby zapisywał wartości funkcji dla każdej krzywej we wspólnej macierzy, gdzie kolumnom odpowiadają kolejne krzywe, a w wierszom kolejne próbki. Pamiętaj o przygotowaniu macierzy o odpowiednim rozmiarze. Wykreśl wykresy pojedynczym wywołaniem funkcji `plt.plot()`.
+
+3. Dodaj legendę. Listę opisów do legendy wygeneruj automatycznie na podstawie zmiennej przechowującej parametry krzywych. Opisy powinny zawierać wartości parametrów zaprezentowane w czytelny sposób.
+
+4. Dodaj do wykresu czwartą krzywą, narysowaną linią przerywaną i kolorem czerwonym, reprezentującą maksymalną wartość dla danego argumentu *t* ze wszystkich składowych funcji. 
 
 
+
+
+
+---
 
 ## Zadanie domowe :home:
 
-Przetestuj działanie poznanych dzisiaj funkcji w środowisku PyCharm:
+1. Przetestuj działanie poznanych dzisiaj funkcji w środowisku PyCharm:
 
-1. Utwórz skrypt, zaimportuj w nim niezbędne biblioteki
+    * Utwórz skrypt, zaimportuj w nim niezbędne biblioteki.
+    
+    * Przygotuj wektor czasu *t* od 0 do 2π, z krokiem 0.01.
+    
+    * Wykreśl na wspólnym wykresie, w pętli, serię trzech krzywych Lissajous, opisanych zestawem równań: 
+![Matplotlib](_images/10/lissajous.png)
 
+    * Przyjmij parametry *A*, *B* i *a* równe 1, parametr *b* ustal inny dla każdej z krzywych ze zbioru [2, 4, 6].
+    
+    * Dodaj do wykresu legendę zawierającą wartość parametru *b* dla każdej z krzywych, opisy osi oraz tytuł.
 
+2. Napisz program wyświetlający zmiany w kursach walut na przestrzeni lat. Możesz wykorzystać środowisko PyCharm lub Jupyter Notebook.
 
+    * Korzysytając z biblioteki `requests` i API na stronie *exchangeratesapi.io* pobierz kursy walut z 1 stycznia każdego roku, począwszy od 2000 do 2019.
 
+    Adres zapytania zwracający kurs z danego dnia w formacie JSON:
+    
+    `https://api.exchangeratesapi.io/YYYY-MM-DD?base=PLN`
 
+    * Odczytaj z pobranego JSON-a kursy PLN w stosunku do USD, EUR i GBP z każdego roku i umieść jako elementy w macierzy `np.array`, gdzie kolumny odpowiadają walutom, a wiersze kolejnym datom.
 
-2. Napisz skrypt wyświetlający zmiany w kursach walut na przestrzeni lat:
-
-* Korzysytając z biblioteki `requests` i API na stronie *exchangeratesapi.io* pobierz kursy walut z 1 stycznia każdego roku, począwszy od 2000 do 2019.
-
-Adres zapytania zwracający kurs z danego dnia w formacie JSON: `https://api.exchangeratesapi.io/YYYY-MM-DD?base=PLN`.
-
-* Odczytaj z pobranego JSON-a kursy PLN w stosunku do USD, EUR i GBP z każdego roku i umieść jako elementy w macierzy `np.array`, gdzie wiersze odpowiadają walutom, a kolumny kolejnym datom.
-
-* Wykreśl wszystkie kursy na wspólnym wykresie w różnych kolorach, dodaj opisy osi i legendę. Pamiętaj o wyświetleniu lat na osi x.
+    * Wykreśl wszystkie kursy na wspólnym wykresie w różnych kolorach, dodaj opisy osi i legendę. Pamiętaj o wyświetleniu lat na osi x.
 
  
 ---
