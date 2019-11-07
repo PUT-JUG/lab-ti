@@ -4,16 +4,10 @@
 
 Jupyter Notebook to wygodne środowisko do tworzenia dokumentów zawierających wykonywalny kod źródłowy, opisy tekstowe, równania czy wizualizacje, najczęściej wykorzystywane w połączeniu z językiem Python. Taka forma pozwala na łatwe testowanie fragmentów kodu, sprawdzanie rozwiązań i czytelną prezentację wyników. Obsługa narzędzia odbywa się przez przeglądarkę internetową.
 
-Po zainstalowaniu pakietów zgodnie z instrukcją *Instalacja Python na domowym komputerze*, aby uruchomić środowisko *Jupyter Notebook* otwórz terminal systemowy (w systemie Windows: `Win`+`R`, wpisz `cmd`):
+Po zainstalowaniu pakietów zgodnie z instrukcją *Instalacja Python na domowym komputerze*, aby uruchomić środowisko *Jupyter Notebook* otwórz terminal systemowy (w systemie Windows: `Win`+`R`, program `cmd`):
 
 ```bash
-jupyter notebook
-```
-
-Jeśli korzystasz z systemu *macOS*, a pakiety instalujesz z repozytorium *macports*, polecenie ma następującą postać:
-
-```bash
-jupyter-3.7 notebook
+python3 -m notebook
 ```
 
 Uruchomienie powyższego polecenia spowoduje uruchomienie *serwera* Jupyter w terminalu i jednocześnie otwarcie domyślnej przeglądarki internetowej z interfejsem środowiska. Nie zamykaj okna terminala, pozostaw je uruchomione w tle. Zwróć uwagę na adres w przeglądarce - adresem serwera jest `localhost` czyli komputer lokalny. Możliwa jest również praca zdalna - serwer może być uruchomiony na maszynie o dużej mocy obliczeniowej, podczas gdy pracujemy w innym miejscu np. na komputerze przenośnym czy nawet urządzeniu mobilnym. Cały program będzie wykonywany na serwerze w tzw. *kernelu*, a nasz komputer wyświetli jedynie jego wyniki.
@@ -316,7 +310,7 @@ plt.figure()
 plt.plot(x, 20*np.sin(x), 'r')
 plt.plot(x[::50], x[::50]**2, '^k')
 plt.plot(x, 5*np.cos(x), '--g')
-plt.legend(["y=sin(x)","y=x^3","y=sqrt(x)" ])
+plt.legend(["y=20sin(x)", "y=x^2", "y=5cos(x)"])
 plt.show()
 ```
 
@@ -360,15 +354,12 @@ W/w parametry przechowaj w programie w wygodny sposób, np. jako listę słownik
 
 3. Dodaj legendę. Listę opisów do legendy wygeneruj automatycznie na podstawie zmiennej przechowującej parametry krzywych. Opisy powinny zawierać wartości parametrów zaprezentowane w czytelny sposób.
 
-4. Dodaj do wykresu czwartą krzywą, narysowaną linią przerywaną i kolorem czerwonym, reprezentującą maksymalną wartość dla danego argumentu *t* ze wszystkich składowych funcji. 
-
-
-
+4. Dodaj do wykresu czwartą krzywą, narysowaną linią przerywaną i kolorem czerwonym, reprezentującą maksymalną wartość dla danego argumentu *t* ze wszystkich składowych funcji. **Podpowiedź:** zajrzyj do dokumentacji funkcji `numpy.amax`, gdzie znajdziesz przykłady użycia.
 
 
 ---
 
-## Zadanie domowe :home:
+## Zadanie domowe :house:
 
 1. Przetestuj działanie poznanych dzisiaj funkcji w środowisku PyCharm:
 
@@ -379,7 +370,7 @@ W/w parametry przechowaj w programie w wygodny sposób, np. jako listę słownik
     * Wykreśl na wspólnym wykresie, w pętli, serię trzech krzywych Lissajous, opisanych zestawem równań: 
 ![Matplotlib](_images/10/lissajous.png)
 
-    * Przyjmij parametry *A*, *B* i *a* równe 1, parametr *b* ustal inny dla każdej z krzywych ze zbioru [2, 4, 6].
+    * Przyjmij parametry *A*, *B* i *a* równe 1, parametr *b* ustal inny dla każdej z krzywych: 2, 4 oraz 6.
     
     * Dodaj do wykresu legendę zawierającą wartość parametru *b* dla każdej z krzywych, opisy osi oraz tytuł.
 
