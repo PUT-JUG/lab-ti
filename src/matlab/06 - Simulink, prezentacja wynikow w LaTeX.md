@@ -68,17 +68,102 @@ Każdy bloczek w Simulinku posiada zestaw parametrów, do którego uzyskujemy do
 
 ---
 
+## Eksport wyników
 
+### Zapisywanie wykresów do plików graficznych
 
-## Zadanie końcowe :fire: :hammer:
+W Matlab każdy wygenerowany wykres możemy zapisać do pliku graficznego. W tym celu w oknie wykresu wybieramy **File** (1) &rarr; **Save As...** (2):
 
-1. Bla
+![saving_figure](./_images/06/saving_figure.png)
+
+Następnie w oknie zapisu możemy wybrać spośród szeregu formatów graficznych:
+
+![saving_figure_formats](./_images/06/saving_figure_formats.png)
+
+Spośród dostępnych formatów najlepiej wybrać:
+
+- `.eps` - *Encapsulated Postscript* - format wektorowy plików używanych w składach testów - wybierz ten format jeżeli chcesz wstawić wykres na przykład w LaTeX,
+- `.svg` -  *Scalable Vector Graphics* - uniwersalny format grafiki wektorowej - użyj go jeżeli chcesz umieścić wykres na stronie internetowej,
+- `.png` - *Portable Network Graphics* - uniwersalny, bezstratny rastrowy format plików graficznych - wykorzystaj w wypadku gdy chcesz zachować wykres do szybkiego podglądu.
+
+---
+
+#### :hammer: :fire: Zadanie :fire: :hammer:
+
+1. Napisz skrypt, w którym dany jest wektor `x = [0:10:360]`, zawierający kąt od 0 do 360 stopni z krokiem 10. Dla podanych wartości kąta oblicz następujące wartości funkcji trygonometrycznych, wyniki umieść w jednej macierzy, w której w kolumnach umieścisz wartości poszczególnych funkcji dla danego kąta. Pamiętaj aby użyć funkcji trygonometrycznych przyjmujących argument w stopniach:
+    - ![eq_sin](./_images/06/eq_sin.svg),
+    - ![eq_cos](./_images/06/eq_cos.svg),
+    - ![eq_sin_plus_cos](./_images/06/eq_sin_plus_cos.svg),
+    - ![eq_sin_minus_cos](./_images/06/eq_sin_minus_cos.svg),
+    - ![eq_sin_squared](./_images/06/eq_sin_squared.svg),
+    - ![eq_cos_squared](./_images/06/eq_cos_squared.svg).
+
+2. Wartości funkcji wyświetl na wykresie. Pamiętaj, aby podać wektor `x` jako argument wykresu. 
+3. Do wykresu dodaj:
+    - siatkę pomocniczą,
+    - tytuł: *Wartości funkcji trygonometrycznych*,
+    - opis osi x: *x [stopnie]*,
+    - opis osi y: *y(t)*,
+    - legendę zawierającą opisy poszczególnych funkcji trygonometrycznych.
+4. Zapisz wykres w formacie EPS (`.eps`).
+5. Utwórz nowy dokument LaTeX typu *article* w TeXStudio. W treści dokumentu, w otoczeniu pływającym *figure* umieść zapisany do pliku EPS wykres. Dodaj opis rysunku: *Wykresy wartości wybranych funkcji trygonometrycznych*.
+
+---
+
+### Zapis do plików tekstowych
+
+Do otwarcie pliku wykorzystywana jest funkcja `fopen()`, do której jako argumenty podajemy ścieżkę do pliku i argumenty z jakimi ma zostać otwarty plik (`r` - odczyt, `w` - zapis (kasuje zawartość pliku), `a` - dopisuje do końca pliku, `r+` - odczyt i zapis). Do pisania do pliku korzystamy z funkcji `fprintf()` (składnia tak jak w `C/C++`), gdzie jako pierwszy argument podajemy wskaźnik do pliku zwrócony przez `fopen()`. Celem zamknięcia pliku korzystamy z `fclose()`:
+
+```matlab
+name = 'John';
+
+x = 1;
+b = -3;
+z = 9.999999999;
+
+file = fopen('essential_data.txt', 'w');
+
+fprintf(file, 'Very important data saved by %s:\n', name);
+fprintf(file, '%d, %d, %.3f\n', x, y, z);
+
+fclose(file);
+```
+
+> Very important data saved by John:  
+> 1, -3, 10.000
+
+---
+
+#### :hammer: :fire: Zadanie :fire: :hammer:
+
+1. Utwórz skrypt, który na podstawie danych (wyniku funkcji trygonometrycznych) przygotowanych w poprzednim zadaniu wygeneruje plik ***trygonometry_data.tex***, który stanie się podstawą do utworzenia tabeli w dokumencie LaTeX. W pierwszej kolumnie tabeli powinny znajdować się kolejne wartości kąta, w kolejnych kolumnach odpowiadające im wartości funkcji. Poniżej przedstawiono przykładowe dwie pierwsze linie wygenerowanego pliku. Zwróć uwagę na precyzję liczb zmienno-przecinkowych zapisanych do pliku.
+
+> 0 & 0.000  & 1.000  & 1.000  & -1.000  & 0.000  & 1.000 \\ \hline  
+> 10 & 0.174  & 0.985  & 1.158  & -0.811  & 0.030  & 0.970 \\ \hline
+>  
+> ...
+
+2. W utworzonym wcześniej dokumencie LaTeX utwórz pływającą tabelę w otoczeniu *table* i umieść w niej wyniki wygenerowane za pomocą skryptu. Do umieszczenia w LaTeX fragmentów z zewnętrznego pliku wykorzystywany jest znacznik `\input{}`:
+
+```tex
+\begin{table}[h]
+    \begin{tabular}{ccccccc}
+        \input{trygonometry_data.tex}
+    \end{tabular}
+\end{table}
+```
+
+3. Wykonaj formatowanie tabeli zgodnie z przykładem poniżej:
+
+![table](./_images/06/table.png)
+
+---
 
 ## Zadanie domowe :boom: :house:
 
 #### Zadanie 1
 
-Bla
+![ned](./_images/06/ned.jpg)
 
 ---
 
