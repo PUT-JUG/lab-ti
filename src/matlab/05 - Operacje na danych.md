@@ -234,8 +234,8 @@ disp(data)
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
 1. Dany jest plik CSV [emg.csv](./_resources/05/emg.csv), zawierający zapis sygnału aktywności mięśniowej z 5 kanałów pomiarowych. Zapisz plik w aktualnym folderze roboczym Matlab i wczytaj do macierzy korzystając z funckji `csvread()`.
-2. Wyświetl na jednym wykresie przebieg wszystkich sygnałów. **PODPOWIEDŹ** przekazując do `plot()` macierz uzyskamy wykres wszystkich kolumn w macierzy, kolory wykresów zostaną automatycznie dobrane.
-3. Wybierz cały pierwszy kanał. Wykonaj progowanie: wszystkim elementom wektora o wartości mniejszej niż 40 i większej niż -40 przypisz wartość 0. Na nowym wykresie wyświetl przebieg sprogowanego kanału. **PODPOWIEDŹ** Możesz wykorzystać `abs()` aby wykonać tylko jedną operację porównania. Nowe okno wykresu otworzysz wywołując komendę `figure`.
+2. Wyświetl na jednym wykresie przebieg wszystkich sygnałów. **PODPOWIEDŹ:** przekazując do `plot()` macierz uzyskamy wykres wszystkich kolumn w macierzy, kolory wykresów zostaną automatycznie dobrane.
+3. Wybierz cały pierwszy kanał. Wykonaj progowanie: wszystkim elementom wektora o wartości mniejszej niż 40 i większej niż -40 przypisz wartość 0. Na nowym wykresie wyświetl przebieg sprogowanego kanału. **PODPOWIEDŹ:** Możesz wykorzystać `abs()` aby wykonać tylko jedną operację porównania. Nowe okno wykresu otworzysz wywołując komendę `figure`.
 4. Wykonaj progowanie jednocześnie na całej macierzy, na wszystkich kanałach. Wyświetl przebiegi po progowaniu na nowym wykresie.
 
 ---
@@ -287,14 +287,14 @@ fprintf('\n')
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
 1. Wylosuj macierz o rozmiarach 10x6 (wiersze x kolumny) i przypisz do zmiennej.
-2. korzystając z pętli `for` do każdego wiersza macierzy dodaj kolejną liczbę naturalną z zakresu od 1 do 6.
+2. Korzystając z pętli `for` do każdej kolumny macierzy dodaj kolejną liczbę naturalną z zakresu od 1 do 6.
 
 ---
 
 ## Zadanie końcowe :fire: :hammer:
 
 1. Dany jest plik CSV [data.csv](./_resources/05/data.csv). Wczytaj dane. W pierwszej kolumnie znajduje się wektor czasu, zapisz go do zmiennej `t`. W kolumnach 2 do 5 znajdują się 4 sygnały sinusoidalne, zapisz je jako macierz do zmiennej `signals`. Wyświetl na jednym wykresie poszczególne składowe sygnału.
-2. Korzystając z pętli `for` wykonaj sumowanie wszystkich 4 składowych sinusoidalnych i zapisz do zmiennej `sin_sum`. Wyświetl na wykresie. **PODPOWIEDŹ** Aby wykonać poprawnie pierwsze sumowanie w pętli możesz zainicjalizować zmienną za pomocą zer. Długość dla nowego wektora możesz sprawdzić korzystając z `length()`.
+2. Korzystając z pętli `for` wykonaj sumowanie wszystkich 4 składowych sinusoidalnych i zapisz do zmiennej `sin_sum`. Wyświetl na wykresie. **PODPOWIEDŹ:** Aby wykonać poprawnie pierwsze sumowanie w pętli możesz zainicjalizować zmienną za pomocą zer. Długość dla nowego wektora możesz sprawdzić korzystając z `length()`.
 3. Wykonaj obcięcie sygnału `sin_sum`, tak aby wszystkie wartości powyżej 10 zastąpić za pomocą 10, a wszystkie wartości poniżej -10 zastąpić za pomocą -10.
 4. Wyświetl na nowym wykresie sygnał `sin_sum` (czerwony, linia kropkowana) oraz `sin_sum` (czarny, linia przerywana) po wykonaniu obcięcia. Dodaj opisy osi, tytuł wykresu oraz legendę.
 
@@ -302,7 +302,7 @@ fprintf('\n')
 
 #### Zadanie 1
 
-Dany jest monochromatyczny obrazek w formacie *.bmp*: [lenna.bmp](./_resources/05/lenna.bmp). Wczytaj obrazek do Matlab/GNU Octave i wyświetl. **PODPOWIEDŹ** Skorzystaj z funkcji `imread()` oraz `imshow()`.
+Dany jest monochromatyczny obrazek w formacie *.bmp*: [lenna.bmp](./_resources/05/lenna.bmp). Wczytaj obrazek do Matlab/GNU Octave i wyświetl. **PODPOWIEDŹ:** Skorzystaj z funkcji `imread()` oraz `imshow()`.
 
 #### Zadanie 2
 
