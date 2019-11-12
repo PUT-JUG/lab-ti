@@ -240,28 +240,6 @@ disp(data)
 
 ---
 
-## Pochodna numeryczna
-
-Do obliczenia pochodnej numerycznej (różnic pomiędzy kolejnymi elementami), można użyć funkcji `diff()`:
-
-```matlab
-x = [1 3 10 -29 3];
-
-disp(diff(x));
-```
-
-> &emsp;2 &emsp;7 &emsp;-39 &emsp;32
-
----
-
-#### :hammer: :fire: Zadanie :fire: :hammer:
-
-1. Dany jest plik CSV [car.csv](./_resources/05/car.csv), zawierający wektor opisujący prędkość pojazdu w czasie przyspieszania. Prędkość próbkowana co 1 s. Wczytaj plik i wyświetl przebieg za pomocą `plot()`.
-2. Oblicz przyspieszenie pojazdu w każdej chwili czasu - przyspieszenie jest pochodną prędkości. Wykreśl przebieg przyspieszenia.
-3. Wyświetl maksymalne przyspieszenie pojazdu.
-
----
-
 ## Pętla `for .. end`
 
 W Matlab pętla `for` służy do wielokrotnego powtarzania zadanego bloku kodu. W czasie definiowania pętli `for` konieczne jest określenie wektora dla którego elementów zostanie wykonana pętla:
