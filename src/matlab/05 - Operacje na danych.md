@@ -201,8 +201,8 @@ end
 ![poly](./_images/05/poly.svg)
 
 2. Wyznacz:
-    - Wektor indeksów dla których wartość funkcji jest większa od 50.
-    - Wektor indeksów dla których wartość funkcji jest mniejsza od 20.
+    - Wektor logiczny dla których wartość funkcji jest większa od 50.
+    - Wektor logiczny dla których wartość funkcji jest mniejsza od 20.
 3. Wyświetl na jednym wykresie:
     - Cały wielomian w zakresie <-3, 3> za pomocą niebieskiej ciągłej linii.
     - Za pomocą czerwonych kółek (bez linii łączącej) wielomian w zakresie dla którego wartości są większe od 50.
