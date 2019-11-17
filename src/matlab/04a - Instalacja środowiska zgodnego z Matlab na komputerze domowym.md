@@ -4,7 +4,7 @@
 
 *Matlab* jest oprogramowaniem płatnym, na prywatnych komputerach zalecana jest instalacja środowiska *GNU Octave* zamiast niego. Środowiska te są ze sobą kompatybilne w zakresie omawianym na zajęciach za wyjątkiem pakietu *Simulink*, odpowiednika którego brak w Octave. Zaletą Octave jest wieloplatformowość, może zostać uruchomiony na Microsoft Windows, GNU Linux, BSD albo macOS.
 
-Strona projekty *GNU Octave*: [https://www.gnu.org](https://www.gnu.org)
+Strona projektu *GNU Octave*: [https://www.gnu.org](https://www.gnu.org)
 
 ## Microsoft Windows
 
