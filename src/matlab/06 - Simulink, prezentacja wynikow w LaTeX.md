@@ -26,7 +26,7 @@ Większość podstawowych bloczków wykorzystywanych w Simulink znajdziemy w kat
 
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
-Z biblioteki z kategorii *Sources* dodaj bloczek *Random Numer*. Z kategorii *Sinks* dodaj bloczek *Scope* i połącz wyjście z generatora liczb losowych z wyświetlaczem. Jak na przykładzie poniżej:
+Z biblioteki z kategorii *Sources* dodaj bloczek *Random Number*. Z kategorii *Sinks* dodaj bloczek *Scope* i połącz wyjście z generatora liczb losowych z wyświetlaczem. Jak na przykładzie poniżej:
 
 ![simulink_first_model](./_images/06/simulink_first_model.png)
 
@@ -136,7 +136,7 @@ fclose(file);
 
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
-1. Utwórz skrypt, który na podstawie danych (wyniku funkcji trygonometrycznych) przygotowanych w poprzednim zadaniu wygeneruje plik ***trygonometry_data.tex***, który stanie się podstawą do utworzenia tabeli w dokumencie LaTeX. W pierwszej kolumnie tabeli powinny znajdować się kolejne wartości kąta, w kolejnych kolumnach odpowiadające im wartości funkcji. Poniżej przedstawiono przykładowe dwie pierwsze linie wygenerowanego pliku. Zwróć uwagę na precyzję liczb zmienno-przecinkowych zapisanych do pliku.
+1. Utwórz skrypt, który na podstawie danych (wyniku funkcji trygonometrycznych) przygotowanych w poprzednim zadaniu wygeneruje plik ***trigonometry_data.tex***, który stanie się podstawą do utworzenia tabeli w dokumencie LaTeX. W pierwszej kolumnie tabeli powinny znajdować się kolejne wartości kąta, w kolejnych kolumnach odpowiadające im wartości funkcji. Poniżej przedstawiono przykładowe dwie pierwsze linie wygenerowanego pliku. Zwróć uwagę na precyzję liczb zmienno-przecinkowych zapisanych do pliku.
 
 > 0 & 0.000  & 1.000  & 1.000  & -1.000  & 0.000  & 1.000 \\ \hline  
 > 10 & 0.174  & 0.985  & 1.158  & -0.811  & 0.030  & 0.970 \\ \hline
@@ -148,7 +148,7 @@ fclose(file);
 ```tex
 \begin{table}[h]
     \begin{tabular}{ccccccc}
-        \input{trygonometry_data.tex}
+        \input{trigonometry_data.tex}
     \end{tabular}
 \end{table}
 ```
