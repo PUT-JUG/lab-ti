@@ -40,7 +40,7 @@ Jeżeli wygląd okna został zmieniony względem domyślnego, można go przywró
 
 ### Podstawowe operacje na liczbach
 
-W Matlab możemy korzystać z podstawowych matematycznych operatorów: `+`, `-`, `*`, `/` itp. przy zachowaniu standardowej kolejności wykonywania działać. Do zmiany kolejności działań wykorzystujemy nawiasy okrągłe `()`:
+W Matlab możemy korzystać z podstawowych matematycznych operatorów: `+`, `-`, `*`, `/` itp. przy zachowaniu standardowej kolejności wykonywania działań. Do zmiany kolejności działań wykorzystujemy nawiasy okrągłe `()`:
 
 ```matlab
 >> 3 + 5
