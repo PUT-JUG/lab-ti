@@ -118,7 +118,7 @@ Do otwarcie pliku wykorzystywana jest funkcja `fopen()`, do której jako argumen
 name = 'John';
 
 x = 1;
-b = -3;
+y = -3;
 z = 9.999999999;
 
 file = fopen('essential_data.txt', 'w');
