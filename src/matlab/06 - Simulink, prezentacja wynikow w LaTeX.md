@@ -138,8 +138,8 @@ fclose(file);
 
 1. Utwórz skrypt, który na podstawie danych (wyniku funkcji trygonometrycznych) przygotowanych w poprzednim zadaniu wygeneruje plik ***trigonometry_data.tex***, który stanie się podstawą do utworzenia tabeli w dokumencie LaTeX. W pierwszej kolumnie tabeli powinny znajdować się kolejne wartości kąta, w kolejnych kolumnach odpowiadające im wartości funkcji. Poniżej przedstawiono przykładowe dwie pierwsze linie wygenerowanego pliku. Zwróć uwagę na precyzję liczb zmienno-przecinkowych zapisanych do pliku.
 
-> 0 & 0.000  & 1.000  & 1.000  & -1.000  & 0.000  & 1.000 \\ \hline  
-> 10 & 0.174  & 0.985  & 1.158  & -0.811  & 0.030  & 0.970 \\ \hline
+> 0 & 0.000  & 1.000  & 1.000  & -1.000  & 0.000  & 1.000 \\\\ \\hline  
+> 10 & 0.174  & 0.985  & 1.158  & -0.811  & 0.030  & 0.970 \\\\ \\hline
 >  
 > ...
 
