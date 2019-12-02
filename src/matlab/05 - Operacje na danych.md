@@ -78,13 +78,13 @@ elseif x == 0
 elseif x == 1
     disp('One')
 else
-    disp('More than one')
+    disp('More than zero but not one')
 end
 ```
 
 Zwróć uwagę, że każde wyrażenie `if`, niezależnie czy zawiera bloki `elseif` lub `else`, musi zostać zakończone przez znacznik `end`. Podstawowa wersja instrukcji warunkowej musi zawierać jedynie `if .. end`, znaczniki `elseif` i `else` są opcjonalne. Jeżeli warunek `if` nie zostanie spełniony sprawdzane są kolejne warunki zawarte w `elseif`, na końcu jeżeli żaden warunek nie został spełniony program może wykonać instrukcje zawarte w sekcji `else`.
 
-W treści warunku możemy wykorzystywać podstawowe operatory porównawcze: `<`, `<=`, `>`, `>=`, `==` (równe), `~=` (różne). Oraz budować bardziej zaawansowane wyrażenia za pomocą operatorów logicznych: `&&` (i), `||` (lub), `~` (nie - negacja).
+W treści warunku możemy wykorzystywać podstawowe operatory porównawcze: `<`, `<=`, `>`, `>=`, `==` (równe), `~=` (różne), oraz budować bardziej zaawansowane wyrażenia za pomocą operatorów logicznych: `&&` (i), `||` (lub), `~` (nie - negacja).
 
 ---
 
@@ -233,7 +233,7 @@ disp(data)
 
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
-1. Dany jest plik CSV [emg.csv](./_resources/05/emg.csv), zawierający zapis sygnału aktywności mięśniowej z 5 kanałów pomiarowych. Zapisz plik w aktualnym folderze roboczym Matlab i wczytaj do macierzy korzystając z funckji `csvread()`.
+1. Dany jest plik CSV [emg.csv](./_resources/05/emg.csv), zawierający zapis sygnału aktywności mięśniowej z 5 kanałów pomiarowych. Zapisz plik w aktualnym folderze roboczym Matlab i wczytaj do macierzy korzystając z funkcji `csvread()`.
 2. Wyświetl na jednym wykresie przebieg wszystkich sygnałów. **PODPOWIEDŹ:** przekazując do `plot()` macierz uzyskamy wykres wszystkich kolumn w macierzy, kolory wykresów zostaną automatycznie dobrane.
 3. Wybierz cały pierwszy kanał. Wykonaj progowanie: wszystkim elementom wektora o wartości mniejszej niż 40 i większej niż -40 przypisz wartość 0. Na nowym wykresie wyświetl przebieg sprogowanego kanału. **PODPOWIEDŹ:** Możesz wykorzystać `abs()` aby wykonać tylko jedną operację porównania. Nowe okno wykresu otworzysz wywołując komendę `figure`.
 4. Wykonaj progowanie jednocześnie na całej macierzy, na wszystkich kanałach. Wyświetl przebiegi po progowaniu na nowym wykresie.
