@@ -62,18 +62,12 @@ file.close()
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
 1. Dany jest plik z ocenami cząstkowymi studentów: [students.txt](./_resources/09/students.txt). Wczytaj dane poszczególnych studentów i oblicz ocenę końcową będącą średnią wszystkich ocen cząstkowych.
-2. Zapisz do pliku imiona, nazwiska i ocenę końcową studentów, w następującym formacie (**PODPOWIEDŹ** Znak końca linii, tzw. Enter, można uzyskać dodając do zapisywanego ciągu znaków: `\n`):
+2. Wypisz imiona, nazwiska i ocenę końcową studentów, w następującym formacie (**PODPOWIEDŹ** Znak końca linii, tzw. Enter, można uzyskać dodając do zapisywanego ciągu znaków: `\n`):
 
 > Kowalski Jan: 4.5  
 > Niekowalski Mariusz: 2.0  
 > Nieprzygotowany Stefan: 2.0  
 > Super Janusz: 5.0
-
-3. Do tego samego pliku, poniżej listy ocen, zapisz imiona i nazwiska studentów, którzy otrzymają stypendia. Stypendia przyznawane są od oceny 4.5:
-
-> Stypendia:  
-> Kowalski Jan  
-> Super Janusz
 
 ---
 
