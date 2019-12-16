@@ -54,7 +54,7 @@ Uruchom konsolę Python w środowisku programistycznym PyCharm.
 
 ### Podstawowe operacje na liczbach
 
-W Pythonie możemy korzystać z podstawowych matematycznych operatorów: `+`, `-`, `*` i `/` przy zachowaniu standardowej kolejności wykonywania działać. Do zmiany kolejności działań wykorzystujemy nawiasy okrągłe `()`:
+W Pythonie możemy korzystać z podstawowych matematycznych operatorów: `+`, `-`, `*` i `/` przy zachowaniu standardowej kolejności wykonywania działań. Do zmiany kolejności działań wykorzystujemy nawiasy okrągłe `()`:
 
 ```python
 >>> 3 + 5
