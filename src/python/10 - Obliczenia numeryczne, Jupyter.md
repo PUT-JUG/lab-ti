@@ -7,6 +7,12 @@ Jupyter Notebook to wygodne środowisko do tworzenia dokumentów zawierających 
 Po zainstalowaniu pakietów zgodnie z instrukcją *Instalacja Python na domowym komputerze*, aby uruchomić środowisko *Jupyter Notebook* otwórz terminal systemowy (w systemie Windows: `Win`+`R`, program `cmd`):
 
 ```bash
+python -m notebook
+```
+
+lub
+
+```bash
 python3 -m notebook
 ```
 
