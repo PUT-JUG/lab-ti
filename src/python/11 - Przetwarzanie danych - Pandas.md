@@ -217,7 +217,7 @@ trig.loc[1:4, "random"] = 0
 trig
 ```
 
-Lub zbioru nowych wartości, na przykład w postaci macierzy NumPy, przy czym należy pamiętać o podaniu macierzy o
+Lub zbioru nowych wartości, na przykład w postaci macierzy NumPy, przy czym należy pamiętać o podaniu macierzy o odpowiednim rozmiarze:
 
 ```python
 trig.loc[trig["cosinus"] >= 0, "random"] = np.array([1, 3, 5])
