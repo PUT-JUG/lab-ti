@@ -375,7 +375,7 @@ W/w parametry przechowaj w programie w wygodny sposób, np. jako listę słownik
     * Przygotuj wektor czasu *t* od 0 do 2π, z krokiem 0.01.
     
     * Wykreśl na wspólnym wykresie, w pętli, serię trzech krzywych Lissajous, opisanych zestawem równań: 
-![Matplotlib](_images/10/lissajous.png)
+![Matplotlib](_images/10/lissajous.svg)
 
     * Przyjmij parametry *A*, *B* i *a* równe 1, parametr *b* ustal inny dla każdej z krzywych: 2, 4 oraz 6.
     
