@@ -1,4 +1,4 @@
-# 10 - Przetwarzanie danych
+# 11 - Przetwarzanie danych - Pandas
 
 ## Pandas
 
