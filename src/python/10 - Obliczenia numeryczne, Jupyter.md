@@ -119,17 +119,17 @@ print("Różne elementy:", b[0, 0], b[0, 1], b[1, 0])
 Często używane typy macierzy (np. jednostkową, wypełnione zerami czy stałą liczbą) można uzyskać poniższymi funkcjami: 
 
 ```python
-c = np.zeros((2,2))         # macierz zer
+c = np.zeros([2, 2])         # macierz zer
 print("zeros:")
 print(c)
 print()
 
-d = np.ones((1,2))          # macierz jedynek
+d = np.ones([1, 2])          # macierz jedynek
 print("ones:")
 print(d)
 print()
 
-e = np.full((2,2), 7)       # macierz wypelniona stałą
+e = np.full([2, 2], 7)       # macierz wypelniona stałą
 print("full:")
 print(e)
 print()
@@ -139,12 +139,12 @@ print("eye:")
 print(f)
 print()
 
-g = np.random.random((2,3)) # macierz z losowymi elementami z przedziału <0...1>
+g = np.random.random([2, 3]) # macierz z losowymi elementami z przedziału <0...1>
 print("random:")
 print(g)
 ```
 
-Metoda `shape` macierzy zwraca *krotkę*, którą na bieżące potrzeby możesz traktować tak samo jak listę, odwołując się do jej elementów nawiasami kwadratowymi. Funkcje `zeros`, `ones` itp. przyjmują jako pierwszy argument również krotkę - jej utworzenie różni się od listy tylko typem nawiasów (okrągłe zamiast kwadratowych).
+Metoda `shape` macierzy zwraca *krotkę*, którą na bieżące potrzeby możesz traktować tak samo jak listę, odwołując się do jej elementów nawiasami kwadratowymi.
 
 Często wymagane jest stworzenie wektora o równomiernym rozkładzie. Służą do tego funkcje `np.arange(start, stop, step)` oraz  `np.linspace(start, stop, num)`:
 
@@ -220,9 +220,9 @@ print()
 
 #### :hammer: :fire: Zadania :fire: :hammer:
 
-1. Stwórz macierz losową o 4 wierszach i 3 kolumnach zawierającą elementy z przedziału <0..100> (**podpowiedź**: funkcja `np.random.random` generuje macierz z elementami z zakresu <0..1>)
+1. Stwórz macierz losową o 4 wierszach i 3 kolumnach zawierającą elementy z przedziału <0..100> (**hint**: funkcja `np.random.random` generuje macierz z elementami z zakresu <0..1>)
 
-2. Utwórz wektor zawierający wartości kątów: 0°, 30°, 45° i 90°. Wyznacz jedną operacją wartości funkcji sinus dla podanych kątów. **Hint:** ![deg2rad](deg2rad.svg)
+2. Utwórz wektor zawierający wartości kątów: 0°, 30°, 45° i 90°. Wyznacz jedną operacją wartości funkcji sinus dla podanych kątów. **Hint:** ![deg2rad](_images/10/deg2rad.svg)
 
 3. Wygeneruj wektor zawierający kolejne potęgi liczby 2 (z wykładnikiem od 0 do 10, zwiększanym co 1)
 
@@ -237,7 +237,7 @@ a = np.arange(10)**3
 print(a)
 print(a[2])
 print(a[2:5])
-print(a[::2))
+print(a[::2])
 ```
 
 Dla dwu- i wielowymiarowych macierzy należy podać w nawiasach jeden zakres dla każdego wymiaru. Możliwe jest podanie wartości `:` oznaczającej pełny zakres w danym wymiarze. Pamiętaj, że zakresy opisują przedział indeksów prawostronnie otwarty.
@@ -259,6 +259,7 @@ Do indeksowania można również użyć macierzy logicznej, będącej np. wyniki
 ```python
 a = np.random.random(10)
 print("a =", a)
+print("a > 0.7 =", a > 0.7)
 b = a[a > 0.7] # wybierz z wektora a elementy większe niż 0.7
 print("b =", b)
 ```
@@ -374,7 +375,7 @@ W/w parametry przechowaj w programie w wygodny sposób, np. jako listę słownik
     * Przygotuj wektor czasu *t* od 0 do 2π, z krokiem 0.01.
     
     * Wykreśl na wspólnym wykresie, w pętli, serię trzech krzywych Lissajous, opisanych zestawem równań: 
-![Matplotlib](_images/10/lissajous.png)
+![Matplotlib](_images/10/lissajous.svg)
 
     * Przyjmij parametry *A*, *B* i *a* równe 1, parametr *b* ustal inny dla każdej z krzywych: 2, 4 oraz 6.
     

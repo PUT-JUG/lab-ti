@@ -2,7 +2,7 @@
 
 ## Czym jest Python?
 
-Python to projekt Open Source interpretowalnego języka programowania wysokiego poziomu. Python posiada rozbudowany wachlarz bibliotek, które pozwalają na wykonanie wielu prostych i skomplikowanych zadań. Czyni to z Pythona, obok języka *R* i *Matlab/GNU Octave*, jedno z najpopularniejszych aktualnie narzędzi do analizy danych. Równocześnie Python świetnie sprawdza się jako rozwiązanie narzędziowe do realizacji szeregu zadań wymaganych w zaawansowanym użytkowaniu komputerów osobistych. Zaletą Pythona jest jego wielo-platformowość,  poprawnie napisany skrypt uruchomimy na systemach Windows, Linux i macOS.
+Python to projekt Open Source interpretowalnego języka programowania wysokiego poziomu. Python posiada rozbudowany wachlarz bibliotek, które pozwalają na wykonanie wielu prostych i skomplikowanych zadań. Czyni to z Pythona, obok języka *R* i *Matlab/GNU Octave*, jedno z najpopularniejszych aktualnie narzędzi do analizy danych. Równocześnie Python świetnie sprawdza się jako rozwiązanie narzędziowe do realizacji szeregu zadań wymaganych w zaawansowanym użytkowaniu komputerów osobistych. Zaletą Pythona jest jego wielo-platformowość, poprawnie napisany skrypt uruchomimy na systemach Windows, Linux i macOS.
 
 ## Tworzenie nowego projektu w PyCharm
 
@@ -65,7 +65,7 @@ W Pythonie możemy korzystać z podstawowych matematycznych operatorów: `+`, `-
 100
 ```
 
-Operacja dzielenia `/` zawsze zwraca wartość zmienno-przecikową, niezależnie od tego czy którakolwiek z liczb jest całkowita:
+Operacja dzielenia `/` zawsze zwraca wartość zmienno-przecinkową, niezależnie od tego czy którakolwiek z liczb jest całkowita:
 
 ```python
 >>> 100 / 6
@@ -306,7 +306,7 @@ Tekst umieszczany po znaku `#` jest ignorowany przez interpreter Pythona. Za zna
 
 ```python
 # to jest komentarz na początku linii
-x = 5 # a to komentrz opisujący przypisanie wartości 5 do zmiennej x
+x = 5 # a to komentarz opisujący przypisanie wartości 5 do zmiennej x
 
 # a poniższy komentarz dezaktywuje linię kodu
 # print('Bye Python!')
