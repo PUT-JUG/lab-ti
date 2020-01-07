@@ -283,7 +283,7 @@ plt.show()
 
 ## Zadanie końcowe 🔥
 
-W pliku `power_consumption.csv` dostępnym do pobrania tutaj dostarczono przebieg napięcia, prądu oraz przesunięcia fazowego. Pierwszą kolumną w pliku jest wektor czasu.
+W pliku `power_consumption.csv` dostępnym do pobrania [tutaj](./_resources/11/power_consumption.csv) dostarczono przebieg napięcia, prądu oraz przesunięcia fazowego. Pierwszą kolumną w pliku jest wektor czasu.
 
 * Wczytaj dane do obiektu `DataFrame` z czasem jako indeksem, wyświetl go na wykresie w notatniku.
 
