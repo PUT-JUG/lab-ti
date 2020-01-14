@@ -467,13 +467,24 @@ W treści warunku możemy wykorzystywać podstawowe operatory porównawcze: `<`,
 
 Napisz skrypt rysujący w konsoli choinkę o zadanej wysokości. Przykładowo dla `height = 5`:
 
-![10_tree](./_images/08b/10_tree.png)
+```
+    *
+   ***
+  *****
+ *******
+*********
+```
 
 #### Zadanie 2
 
 Napisz skrypt rysujący w konsoli pusty kwadrat o zadanej długości boku. Przykładowo dla `side = 4`:
 
-![11_rectangle](./_images/08b/11_rectangle.png)
+```
+****
+*  *
+*  *
+****
+```
 
 #### Zadanie 3
 
