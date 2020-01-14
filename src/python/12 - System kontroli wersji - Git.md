@@ -212,6 +212,8 @@ Podobnie jak inne serwisy społecznościowe GitHub umożliwia komunikację międ
 
 Jedną z najważniejszych funkcjonalności gita jest możliwość kooperacji wielu autorów przy jednym projekcie. W celu dodania osoby współpracującej na stronie danego repozytorium (bezpośrednio w serwisie [GitHub.com](https://github.com) należy wybrać zakładkę **Setiings** a następnie **Collaborators**. Następnie korzystając z paska wyszukiwania można wyszukać innych użytkowników *GitHub* i dodać je jako osoby współpracujące. Od tego momentu wybrany użytkownik ma możliwość modyfikowania Twojego repozytorium.
 
+**UWAGA**: Powiadomienia o zaproszeniach dostarczane są e-mailem. W celu akceptacji zaproszenia należy kliknąć *View invitations* w dostarczonym e-mail i postępować zgodnie z instrukcją na otwartej stronie.
+
 ---
 
 #### :hammer: :fire: Zadanie :fire: :hammer:
