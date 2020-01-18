@@ -235,7 +235,7 @@ Następnie wyszukujemy repozytorium współautora programu i klikamy:
 #### :hammer: :fire: Zadanie :fire: :hammer:
 
 1. Wykonaj *clone* repozytorium kolegi/koleżanki z grupy.
-2. Zmodyfikuj program, tak aby poza kodami ASCII poszczególnych liter w każdej linijce program prezentował właściwy znak. Na końcu program powinien wyświetlić napis: *This changes were made by Imię Nazwisko*. Np.:
+2. Zmodyfikuj program, tak aby poza kodami ASCII poszczególnych liter w każdej linijce program prezentował właściwy znak. Na końcu program powinien wyświetlić napis: *These changes were made by Imię Nazwisko*. Np.:
 
 > This is my first Python repository  
 > T - 84  
@@ -245,7 +245,7 @@ Następnie wyszukujemy repozytorium współautora programu i klikamy:
 >  
 > ...  
 >  
-> This changes were made by Franek Kowalski
+> These changes were made by Franek Kowalski
 
 3. W GitHub Desktop wybierz zmienione lokalne repozytorium i dodaj nowy *commit* oraz wyślij go na serwer.
 4. Ściągnij zmiany do swojego repozytorium wykonane przez kolegę/koleżankę.
