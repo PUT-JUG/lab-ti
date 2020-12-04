@@ -249,12 +249,12 @@ Dany jest plik JSON: [citybikes_networks.json](./_resources/09/citybikes_network
 
 *The Star Wars API* dostarcza informacje o filmach z uniwersum *Star Wars*. Można uzyskać informacje o następujących tematach:
 
-- Bohaterzy - [https://swapi.co/api/people/](https://swapi.co/api/people/)
-- Planety - [https://swapi.co/api/planets/](https://swapi.co/api/planets/)
-- Statki kosmiczne - [https://swapi.co/api/starships](https://swapi.co/api/starships)
-- Pojazdy - [https://swapi.co/api/vehicles](https://swapi.co/api/vehicles)
-- Rasy - [https://swapi.co/api/species](https://swapi.co/api/species)
-- Filmy - [https://swapi.co/api/films](https://swapi.co/api/films)
+- Bohaterzy - [https://swapi.dev/api/people/](https://swapi.dev/api/people/)
+- Planety - [https://swapi.dev/api/planets/](https://swapi.dev/api/planets/)
+- Statki kosmiczne - [https://swapi.dev/api/starships](https://swapi.dev/api/starships)
+- Pojazdy - [https://swapi.dev/api/vehicles](https://swapi.dev/api/vehicles)
+- Rasy - [https://swapi.dev/api/species](https://swapi.dev/api/species)
+- Filmy - [https://swapi.dev/api/films](https://swcoapi.dev/api/films)
 
 Wchodząc na którykolwiek z powyższych linków zobaczymy stronę z informacjami na poszczególne tematy. Jeżeli wykonamy zapytanie za pomocą innego klienta (na przykład modułu `requests`) otrzymamy zawartość w postaci zgodnej z JSON.
 
